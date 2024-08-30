@@ -1,0 +1,340 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.sidebar {
+    height: 100vh;
+    width: 250px;
+    background-color: #306EE8;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+}
+
+.sidebar.closed {
+    transform: translateX(-100%);
+}
+
+.sidebar .logo {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar .logo h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s, padding-left 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #235ab2;
+    padding-left: 25px;
+}
+
+.main-content {
+    margin-left: 270px; /* Ini untuk jarak saat sidebar terbuka */
+    padding: 30px;
+    transition: margin-left 0.3s ease;
+}
+
+.main-content.collapsed {
+    margin-left: 70px; /* Ini untuk jarak saat sidebar ditutup */
+}
+
+#toggleSidebarBtn {
+    background-color: #306EE8;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1100;
+    transition: left 0.3s ease;
+}
+
+#toggleSidebarBtn.collapsed {
+    left: 20px; /* Pindah posisi tombol saat sidebar ditutup */
+}
+
+h2 {
+    color: #306EE8;
+    font-size: 28px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #306EE8;
+    padding-bottom: 10px;
+}
+
+button {
+    background-color: #306EE8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.3s;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background-color: #235ab2;
+    transform: scale(1.05);
+}
+
+.actions button i {
+    font-size: 16px;
+    color: white;
+}
+
+.actions button.edit {
+    background-color: #28a745;
+}
+
+.actions button.delete {
+    background-color: #dc3545;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    background-color: #fafafa;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #306EE8;
+    color: white;
+}
+
+td {
+    color: #333;
+}
+
+td.actions {
+    text-align: center;
+}
+
+td.actions button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+td.actions button.edit {
+    background-color: #28a745;
+}
+
+td.actions button.delete {
+    background-color: #dc3545;
+}
+
+td.actions button:hover {
+    transform: scale(1.05);
+}
+
+td.actions button.edit:hover {
+    background-color: #218838;
+}
+
+td.actions button.delete:hover {
+    background-color: #c82333;
+}
+
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.4); 
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto; 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 20%;
+    max-width: 500px;
+    border-radius: 10px;
+    position: relative;
+    text-align: center; 
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    color: #306EE8;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the form elements */
+}
+
+.modal-content form label {
+    width: 100%;
+    text-align: left; /* Align labels to the left */
+    margin-bottom: 5px;
+}
+
+.modal-content form input {
+    width: 90%; /* Ensures full-width input fields */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0 auto; /* Center the input fields */
+}
+
+.modal-content form button {
+    width: 70%; /* Full-width button */
+    padding: 10px;
+    font-size: 16px;
+    background-color: #306EE8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #306EE8; /* Warna berubah saat hover */
+}
+
+.modal-content form button:hover {
+    background-color: #235ab2;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column; /* Mengatur posisi label dan input secara vertikal */
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    text-align: left; /* Agar tulisan berada di kiri */
+}
+
+.form-group input {
+    width: 100%; 
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group-inline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-group-inline label {
+    width: 30%; /* Mengatur lebar label */
+    text-align: right;
+    margin-right: 10px;
+}
+
+.form-group-inline input {
+    width: 70%; /* Mengatur lebar input */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
