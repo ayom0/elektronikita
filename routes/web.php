@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-//Untuk Auth
-use App\Http\Controllers\Auth\registerController;
+//Untuk Register dan Login
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 
 //usermanagement
 use App\Http\Controllers\UserManagementController;
@@ -17,21 +18,30 @@ Route::get('/', function () {
 });
 
 
-Route::get('/login', function () {
-    return view('auth.login');
+
+
+
+Route::middleware('guest')->group(function () {
+    // Rute Register
+    Route::get('/register', [RegisterController::class, 'create'])->name('register');
+    Route::post('/register', [RegisterController::class, 'store']);
+
+     // Rute login
+     Route::get('/login', [LoginController::class, 'create'])->name('login');
+     Route::post('/login', [LoginController::class, 'store']);
+
 });
 
 
-//Route Register
-Route::post('/register', [registerController::class, 'register'])->name('register');
-Route::get('/register', [registerController::class, 'register'])->name('register');
 
 
-
-
-//Route Usermanagement
+//Rute Usermanagement
 Route::get('/usermanagement', [UserManagementController::class, 'index'])->name('usermanagement.index');
 Route::resource('users', UserManagementController::class);
+//Rute ProductManagement
+Route::get('/productmanagement', function () {
+    return view('admin.ProductManagement');
+});
 
 
 

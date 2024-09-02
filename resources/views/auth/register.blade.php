@@ -18,13 +18,17 @@
             <div class="form-content">
                 <header>Register</header>
                 <form action="{{ route('register') }}" method="POST">
-    @csrf
-    <div class="field input-field">
+            @csrf
+        <div class="field input-field">
         <input type="email" name="email" placeholder="Email" class="input" required>
-    </div>
-    <div class="field input-field">
+        </div>
+        <div class="field input-field">
         <input type="password" name="password" placeholder="Create password" class="password" required>
     </div>
+    <div class="field input-field">
+    <input type="password" name="password_confirmation" placeholder="Confirm password" class="password" required>
+</div>
+
     <div class="field button-field">
         <button type="submit">Register</button>
     </div>
