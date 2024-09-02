@@ -30,21 +30,25 @@ class RegisterController extends Controller
         $request->validate([
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'phone_number' => ['required', 'string', 'max:15'],
+            'address' => ['nullable', 'string', 'max:255'],
         ]);
-
+    
         // Membuat pengguna baru
         $user = User::create([
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'registration_date' => now(), // Atau gunakan tanggal yang sesuai
+            'phone_number' => $request->phone_number,
+            'address' => $request->address,
+            'registration_date' => now(),
         ]);
-
+    
         // Memicu event registrasi
         event(new Registered($user));
-
+    
         // Log in pengguna
         Auth::login($user);
-
+    
         // Redirect ke halaman dashboard pengguna
         return redirect()->route('usermanagement.index');
     }

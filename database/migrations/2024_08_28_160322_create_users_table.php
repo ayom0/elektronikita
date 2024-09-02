@@ -12,13 +12,19 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('phone_number')->nullable(false);
+            $table->string('address')->nullable();
             $table->date('registration_date');
+            $table->string('role')->default('user'); // Menambahkan kolom role dengan default 'user'
             $table->timestamps();
         });
     }
-
+    
     public function down()
     {
         Schema::dropIfExists('users');
     }
+    
+
+    
 }

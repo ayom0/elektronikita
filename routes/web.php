@@ -8,7 +8,8 @@ use App\Http\Controllers\LoginController;
 
 //usermanagement
 use App\Http\Controllers\UserManagementController;
-
+//Rute ProductManagement
+use App\Http\Controllers\ProductController;
 
 
 
@@ -38,10 +39,11 @@ Route::middleware('guest')->group(function () {
 //Rute Usermanagement
 Route::get('/usermanagement', [UserManagementController::class, 'index'])->name('usermanagement.index');
 Route::resource('users', UserManagementController::class);
+
 //Rute ProductManagement
-Route::get('/productmanagement', function () {
-    return view('admin.ProductManagement');
-});
+Route::get('/productmanagement', [ProductController::class, 'index'])->name('productmanagement.index');
+Route::resource('product', ProductController::class);
+
 
 
 

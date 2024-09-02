@@ -23,7 +23,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/dashboard'); // Ganti dengan rute setelah login
+            return redirect()->intended('/'); // Ganti dengan rute setelah login
         }
 
         throw ValidationException::withMessages([

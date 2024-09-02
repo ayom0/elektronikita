@@ -60,59 +60,91 @@
             <h2>User Management</h2>
             <button id="addUserBtn">Add New User</button>
             <table>
-                <thead>
-                    <tr>
-                        <th>Email</th>
-                        <th>Password</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach ($users as $user)
-                <tr>
-                     <td>{{ $user->email }}</td>
-                     <td>••••••••</td>
-                     <td class="actions">
-                     <button class="edit" data-id="{{ $user->id }}" data-email="{{ $user->email }}" data-registration-date="{{ $user->registration_date }}"><i class="fas fa-pencil-alt"></i></button>
-                     <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;">
-                     @csrf
-                     @method('DELETE')
-                    <button class="delete"><i class="fas fa-trash-alt"></i></button>
+            <thead>
+    <tr>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Address</th>
+        <th>Role</th> <!-- Tambahkan kolom Role -->
+        <th>Password</th>
+        <th>Actions</th>
+    </tr>
+</thead>
+<tbody>
+    @foreach ($users as $user)
+    <tr>
+        <td>{{ $user->email }}</td>
+        <td>{{ $user->phone_number }}</td>
+        <td>{{ $user->address }}</td>
+        <td>{{ ucfirst($user->role) }}</td> <!-- Tampilkan role -->
+        <td>••••••••</td>
+        <td class="actions">
+            <button class="edit" 
+                    data-id="{{ $user->id }}" 
+                    data-email="{{ $user->email }}" 
+                    data-phone="{{ $user->phone_number }}" 
+                    data-address="{{ $user->address }}" 
+                    data-role="{{ $user->role }}" 
+                    data-registration-date="{{ $user->registration_date }}">
+                <i class="fas fa-pencil-alt"></i>
+            </button>
+            <form action="{{ route('users.destroy', $user->id) }}" method="POST" style="display:inline;">
+                @csrf
+                @method('DELETE')
+                <button class="delete"><i class="fas fa-trash-alt"></i></button>
             </form>
         </td>
     </tr>
-@endforeach
+    @endforeach
+</tbody>
 
-                </tbody>
-            </table>
+</table>
+
         </div>
     </div>
 
     <!-- Modal for Add User -->
     <div id="addUserModal" class="modal">
-        <div class="modal-content">
-            <button class="close-btn">&times;</button>
-            <form id="addUserForm" action="{{ route('users.store') }}" method="POST">
-                @csrf
-                <div class="form-group">
-                    <label for="add-email">Email:</label>
-                    <input type="email" id="add-email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="add-password">Password:</label>
-                    <input type="password" id="add-password" name="password" required>
-                </div>
-                <div class="form-group">
-                    <label for="add-registration-date">Registration Date:</label>
-                    <input type="date" id="add-registration-date" name="registration_date" required>
-                </div>
-                <button type="submit">Add User</button>
-            </form>
-        </div>
+    <div class="modal-content">
+        <button class="close-btn">&times;</button>
+        <form id="addUserForm" action="{{ route('users.store') }}" method="POST">
+            @csrf
+            <div class="form-group">
+                <label for="add-email">Email:</label>
+                <input type="email" id="add-email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="add-password">Password:</label>
+                <input type="password" id="add-password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="add-phone">Phone Number:</label>
+                <input type="text" id="add-phone" name="phone_number" required>
+            </div>
+            <div class="form-group">
+                <label for="add-address">Address:</label>
+                <input type="text" id="add-address" name="address">
+            </div>
+            <div class="form-group">
+                <label for="add-registration-date">Registration Date:</label>
+                <input type="date" id="add-registration-date" name="registration_date" required>
+            </div>
+            <div class="form-group">
+    <label for="add-role">Role:</label>
+    <select id="add-role" name="role" required>
+        <option value="user">User</option>
+        <option value="admin">Admin</option>
+    </select>
+</div>
+
+            <button type="submit">Add User</button>
+        </form>
     </div>
+</div>
+
 
    <!-- Modal for Edit User -->
-<div id="editUserModal" class="modal">
+   <div id="editUserModal" class="modal">
     <div class="modal-content">
         <button class="close-btn">&times;</button>
         <form id="editUserForm" method="POST">
@@ -127,14 +159,31 @@
                 <input type="password" id="edit-password" name="password">
             </div>
             <div class="form-group">
+                <label for="edit-phone">Phone Number:</label>
+                <input type="text" id="edit-phone" name="phone_number" required>
+            </div>
+            <div class="form-group">
+                <label for="edit-address">Address:</label>
+                <input type="text" id="edit-address" name="address">
+            </div>
+            <div class="form-group">
                 <label for="edit-registration-date">Registration Date:</label>
                 <input type="date" id="edit-registration-date" name="registration_date" required>
             </div>
+            <div class="form-group">
+    <label for="edit-role">Role:</label>
+    <select id="edit-role" name="role" required>
+        <option value="user">User</option>
+        <option value="admin">Admin</option>
+    </select>
+</div>
+
             <input type="hidden" id="edit-user-id" name="user_id">
             <button type="submit">Edit User</button>
         </form>
     </div>
 </div>
+
 
 
     <script>
@@ -144,25 +193,28 @@
             document.getElementById('addUserForm').reset();
         });
 
-        // Open modal for editing a user
-    document.querySelectorAll('.edit').forEach(function(button) {
-        button.addEventListener('click', function() {
-            var userId = this.getAttribute('data-id');
-            var userEmail = this.getAttribute('data-email');
-            var registrationDate = this.getAttribute('data-registration-date');
+       // Open modal for editing a user
+       document.querySelectorAll('.edit').forEach(function(button) {
+    button.addEventListener('click', function() {
+        var userId = this.getAttribute('data-id');
+        var userEmail = this.getAttribute('data-email');
+        var userPhone = this.getAttribute('data-phone');
+        var userAddress = this.getAttribute('data-address');
+        var registrationDate = this.getAttribute('data-registration-date');
+        var userRole = this.getAttribute('data-role'); // Ambil role dari button
 
-            // Set form values
-            document.getElementById('edit-email').value = userEmail;
-            document.getElementById('edit-registration-date').value = registrationDate;
-            document.getElementById('edit-user-id').value = userId;
+        document.getElementById('edit-email').value = userEmail;
+        document.getElementById('edit-phone').value = userPhone;
+        document.getElementById('edit-address').value = userAddress;
+        document.getElementById('edit-registration-date').value = registrationDate;
+        document.getElementById('edit-role').value = userRole; // Set nilai role
+        document.getElementById('edit-user-id').value = userId;
 
-            // Update the form's action to include the correct user ID
-            document.getElementById('editUserForm').action = "{{ url('users') }}/" + userId;
-
-            // Display the modal
-            document.getElementById('editUserModal').style.display = 'block';
-        });
+        document.getElementById('editUserForm').action = "{{ url('users') }}/" + userId;
+        document.getElementById('editUserModal').style.display = 'block';
     });
+});
+
 
 
 

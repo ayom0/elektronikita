@@ -234,7 +234,7 @@ https://templatemo.com/tm-559-zay-shop
                             <h6>Specification:</h6>
                             <ul class="list-unstyled pb-3">
                                 <li>CPU : AMD Ryzen™ 7 7735HS</li>
-                                <li>GPU : NVIDIA® GeForce RTX™ 4050 Laptop GPU</li>
+                                <li>GPU : NVIDIA® GeForce RTX™ 4090 Laptop GPU</li>
                                 <li>Windows 11 Home</li>
                                 <li>512GB M.2 NVMe™ PCIe® 4.0 SSD storage</li>
                                 <li>Memory: DDR5 16GB Support dual channel memory</li>
