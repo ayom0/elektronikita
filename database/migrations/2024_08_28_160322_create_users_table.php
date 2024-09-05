@@ -9,22 +9,20 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('phone_number')->nullable(false);
-            $table->string('address')->nullable();
-            $table->date('registration_date');
-            $table->string('role')->default('user'); // Menambahkan kolom role dengan default 'user'
-            $table->timestamps();
+            $table->id(); // Default primary key with 'id'
+            $table->string('email')->unique(); // Unique email
+            $table->string('password'); // Password
+            $table->string('phone_number')->nullable(false); // Phone number (not nullable)
+            $table->string('address')->nullable(); // Address (nullable)
+            $table->date('registration_date'); // Registration date
+            $table->string('role')->default('user'); // Role with default 'user'
+            $table->timestamps(); // Timestamps
         });
     }
     
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('users'); // Drops users table
     }
-    
-
-    
 }
+

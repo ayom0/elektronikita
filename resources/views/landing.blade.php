@@ -12,6 +12,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 
 	<link rel="stylesheet" href="fonts/icomoon/style.css">
@@ -52,24 +53,6 @@
 					<div class="col-8 text-center">
 						<ul class="js-clone-nav d-none d-lg-inline-block text-start site-menu mx-auto">
 							<li class="active"><a href="index.html">Home</a></li>
-							<li class="has-children">
-								<a href="financing.html">Produk</a>
-								<ul class="dropdown">
-									<li><a href="financing.html">Laptop</a></li>
-									<li><a href="single.html">Handphone</a></li>
-									<li><a href="case-study.html">Aksesoris Laptop</a></li>
-									<li><a href="#">Aksesoris Handphone</a></li>
-									<li><a href="#">TV</a></li>
-									<li class="has-children">
-										<a href="#">Komponen PC</a>
-										<ul class="dropdown">
-											<li><a href="#">Ram</a></li>
-											<li><a href="#">CPU</a></li>
-											<li><a href="#">VGA</a></li>
-										</ul>
-									</li>
-								</ul>
-							</li>
 							<li><a href="about.html">Contact Us</a></li>
 							<li><a href="contact.html">Daftar</a></li>
 						</ul>

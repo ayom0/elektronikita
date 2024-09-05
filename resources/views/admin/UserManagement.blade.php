@@ -46,8 +46,9 @@
             <h2>Admin Panel</h2>
         </div>
         <ul>
-            <li><a href="#user-management">User Management</a></li>
+        <li><a href="#user-management">User Management</a></li>
             <li><a href="#payments">Payments</a></li>
+            <li><a href="#kategori">Kategori</a></li>
             <li><a href="#products">Products</a></li>
             <li><a href="#shipping">Shipping</a></li>
             <li><a href="#landing-pages">Landing Pages</a></li>

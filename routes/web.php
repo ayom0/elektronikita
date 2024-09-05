@@ -9,7 +9,7 @@ use App\Http\Controllers\LoginController;
 //usermanagement
 use App\Http\Controllers\UserManagementController;
 //Rute ProductManagement
-use App\Http\Controllers\ProductController;
+
 
 
 
@@ -18,6 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+use App\Http\Controllers\CategoryController;
+
+Route::resource('categories', CategoryController::class);
 
 
 
@@ -41,14 +46,23 @@ Route::get('/usermanagement', [UserManagementController::class, 'index'])->name(
 Route::resource('users', UserManagementController::class);
 
 //Rute ProductManagement
-Route::get('/productmanagement', [ProductController::class, 'index'])->name('productmanagement.index');
-Route::resource('product', ProductController::class);
+use App\Http\Controllers\ProductController;
+
+Route::resource('products', ProductController::class);
 
 
 
 
 Route::get('/landingpage', function () {
     return view('landing');
+});
+
+Route::get('/profil', function () {
+    return view('users.profile');
+});
+
+Route::get('/pesanan', function () {
+    return view('users.pesanan');
 });
 
 Route::get('/home', function () {
