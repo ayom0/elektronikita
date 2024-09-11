@@ -1,48 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ElektronikKita</title>
-    
-    <link rel="shortcut icon" type="image/x-icon" href="image/logo.png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" >
-    <link rel="stylesheet" href="assets/home/css/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
-    <link rel="stylesheet" href="assets/home/css/fontawesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <title>shop</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
     <link rel="stylesheet" href="assets/home/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/home/css/templatemo.css">
     <link rel="stylesheet" href="assets/home/css/custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-    <style>
-        .update-form {
-            display: flex;
-            align-items: center;
-        }
+    <!-- Load fonts style after rendering the layout styles -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="assets/home/css/fontawesome.min.css">
+<!--
+    
+TemplateMo 559 Zay Shop
 
-        .quantity-input {
-            max-width: 100px;
-        }
+https://templatemo.com/tm-559-zay-shop
 
-        .update-form .btn {
-            padding: 0.5rem 1rem;
-            font-size: 0.875rem;
-        }
-    </style>
+-->
 </head>
+
 <body>
-   <!-- navigation -->
-   <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
+    <!-- Start Top Nav -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
         <div class="container text-light">
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
                     <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">ElektronikKita@gmail.com</a>
                     <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">0897237</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">089231372</a>
                 </div>
                 <div>
                     <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
@@ -51,7 +44,10 @@
             </div>
         </div>
     </nav>
+    <!-- Close Top Nav -->
 
+
+    <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
@@ -82,7 +78,12 @@
                 </div>
                 <div class="navbar align-self-center d-flex">
                     <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
-                        
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
+                            <div class="input-group-text">
+                                <i class="fa fa-fw fa-search"></i>
+                            </div>
+                        </div>
                     </div>
                     <a class="nav-icon position-relative text-decoration-none" href="#">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
@@ -97,78 +98,126 @@
 
         </div>
     </nav>
+    <!-- Close Header -->
 
-    <!-- cart -->
-    <section id="cart" class="container my-5 pt-5">
-        <div class="mt-5 py-2 text-center">
-            <h2 class="font-weight-bold">Keranjang</h2>
-            <hr>
-        </div>
-        <div class="cart-content">
-            <table width="100%">
-                <thead>
-                    <tr>
-                        <td>Hapus</td>
-                        <td>Gambar</td>
-                        <td>Barang</td>
-                        <td>Harga</td>
-                        <td>Jumlah</td>
-                        <td>Subtotal</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse($cart as $item)
-                        <tr>
-                            <td><a href="{{ route('cart.remove', $item['id_produk']) }}" class="text-danger"><i class="far fa-times-circle"></i></a></td>
-                            <td><img src="{{ asset('storage/' . $item['foto']) }}" width="100"></td>
-                            <td>{{ $item['nama_produk'] }}</td>
-                            <td>Rp{{ number_format($item['harga'], 2, ',', '.') }}</td>
-                            <td>
-                                <form action="{{ route('cart.update', $item['id_produk']) }}" method="POST" class="update-form">
-                                    @csrf
-                                    <div class="d-flex align-items-center">
-                                        <input type="number" name="quantity" value="{{ $item['jumlah'] }}" min="1" class="form-control quantity-input">
-                                        <button type="submit" class="btn btn-primary ms-2">Update</button>
-                                    </div>
-                                </form>
-                            </td>
-                            <td>Rp{{ number_format($item['subtotal'], 2, ',', '.') }}</td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="6" class="text-center">Keranjang kosong</td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
-        </div>
-    </section>
+    <!-- Modal -->
+    
 
-    <section id="cart-add" class="container">
+
+
+    <!-- Start Content -->
+    <div class="container py-5">
         <div class="row">
-            <div id="subtotal" class="col-md-6">
-                <h3>Total keranjang</h3>
-                <table>
-                    <tr>
-                        <td>Subtotal keranjang</td>
-                        <td>Rp10.000.000</td>
-                    </tr>
-                    <tr>
-                        <td>Shipping</td>
-                        <td>Free</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Total</strong></td>
-                        <td><strong>Rp40.000.000</strong></td>
-                    </tr>
-                </table>
-                <button class="normal">Proceed to checkout</button>
-            </div>
-        </div>
-    </section>
 
-   <!-- Start Footer -->
-   <footer class="bg-dark" id="tempaltemo_footer">
+            <div class="col-lg-3">
+                <h1 class="h2 pb-4">Kategori</h1>
+                <ul class="list-unstyled templatemo-accordion">
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                            Laptop
+                            <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                        <ul class="collapse show list-unstyled pl-3">
+                            <li><a class="text-decoration-none" href="#">Gaming Notebook</a></li>
+                            <li><a class="text-decoration-none" href="#">Notebook</a></li>
+                        </ul>
+                    </li>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                            Monitor
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                        <ul id="collapseTwo" class="collapse list-unstyled pl-3">
+                            <li><a class="text-decoration-none" href="#">Gaming</a></li>
+                            <li><a class="text-decoration-none" href="#">Smart</a></li>
+                        </ul>
+                    </li>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                            aksesoris
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                        <ul id="collapseTwo" class="collapse list-unstyled pl-3">
+                            <li><a class="text-decoration-none" href="#">Cooler Laptop</a></li>
+                            <li><a class="text-decoration-none" href="#">Gamepad</a></li>
+                            <li><a class="text-decoration-none" href="#">Mouse</a></li>
+                            <li><a class="text-decoration-none" href="#">Mousepad</a></li>
+                            <li><a class="text-decoration-none" href="#">Keyboard</a></li>
+                           <li><a class="text-decoration-none" href="#">Breket-Monitor</a></li>
+                            <li><a class="text-decoration-none" href="#">Gamepad</a></li>
+                        </ul>
+                    </li>
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                            Komponen PC
+                            <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                        </a>
+                        <ul id="collapseTwo" class="collapse list-unstyled pl-3">
+                            <li><a class="text-decoration-none" href="#">VGA</a></li>
+                            <li><a class="text-decoration-none" href="#">CPU</a></li>
+                            <li><a class="text-decoration-none" href="#">Cooler</a></li>
+                            <li><a class="text-decoration-none" href="#">RAM</a></li>
+                            <li><a class="text-decoration-none" href="#">SSD/HDD</a></li>
+                            <li><a class="text-decoration-none" href="#">PSU</a></li>
+                            <li><a class="text-decoration-none" href="#">Mainboard</a></li>
+                            <li><a class="text-decoration-none" href="#">Casing</a></li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-inline shop-top-menu pb-3 pt-1">
+                            <li class="list-inline-item">
+                                <a class="h3 text-dark text-decoration-none mr-3" href="#">Monitor Gaming</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 pb-4">
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach ($products as $product)
+                        <div class="col-md-4">
+                            <div class="card mb-4 product-wap rounded-0">
+                                <div class="card rounded-0">
+                                    <img class="card-img rounded-0 img-fluid" src="{{ asset('storage/' . $product->foto) }}" alt="{{ $product->nama_produk }}">
+                                    <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                                        <ul class="list-unstyled">
+                                            <li><a class="btn btn-success text-white" href="#"><i class="far fa-heart"></i></a></li>
+                                            <li><a class="btn btn-success text-white mt-2" href="#"><i class="far fa-eye"></i></a></li>
+                                            <li><a class="btn btn-success text-white mt-2" href="#"><i class="fas fa-cart-plus"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <a href="#" class="h3 text-decoration-none">{{ $product->nama_produk }}</a>
+                                    <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                        <li>{{ $product->category->nama_kategori ?? 'Uncategorized' }}</li>
+                                    </ul>
+                                    <p class="text-center mb-0">Rp.{{ number_format($product->harga, 2, ',', '.') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div div="row">
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- End Content -->
+
+   
+
+
+    <!-- Start Footer -->
+    <footer class="bg-dark" id="tempaltemo_footer">
         <div class="container">
             <div class="row">
 
@@ -244,7 +293,8 @@
                 <div class="row pt-2">
                     <div class="col-12">
                         <p class="text-left text-light">
-                          
+                            Copyright &copy; 2021 Company Name 
+                            | Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
                         </p>
                     </div>
                 </div>
@@ -253,9 +303,7 @@
 
     </footer>
     <!-- End Footer -->
-  
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
 
     <!-- Start Script -->
     <script src="assets/home/js/jquery-1.11.0.min.js"></script>
@@ -265,4 +313,5 @@
     <script src="assets/home/js/custom.js"></script>
     <!-- End Script -->
 </body>
+
 </html>

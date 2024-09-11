@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 //Untuk Register dan Login
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
 
 //usermanagement
 use App\Http\Controllers\UserManagementController;
@@ -32,10 +33,19 @@ Route::middleware('guest')->group(function () {
     Route::get('/register', [RegisterController::class, 'create'])->name('register');
     Route::post('/register', [RegisterController::class, 'store']);
 
+    
+    
+
      // Rute login
      Route::get('/login', [LoginController::class, 'create'])->name('login');
      Route::post('/login', [LoginController::class, 'store']);
 
+});
+
+Route::middleware('auth')->group(function () {
+    // Rute Profile
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
 
@@ -50,7 +60,29 @@ use App\Http\Controllers\ProductController;
 
 Route::resource('products', ProductController::class);
 
+//Rute keranjang
+use App\Http\Controllers\CartController;
 
+Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
+Route::get('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/remove-from-cart/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+Route::post('/update-cart/{id}', [CartController::class, 'updateCart'])->name('cart.update');
+
+
+//Rute ShopGaming Notebook
+use App\Http\Controllers\ShopController;
+
+Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
+
+//Rute ShopGaming Notebook
+use App\Http\Controllers\ShopControllerNotebook;
+
+Route::get('/shopNotebook', [ShopControllerNotebook::class, 'index'])->name('shopNotebook.index');
+
+//Rute ShopGaming Notebook
+use App\Http\Controllers\ShopControllerGamingMonitor;
+
+Route::get('/shopSamsungMonitor', [ShopControllerGamingMonitor::class, 'index'])->name('shopSamsungMonitor.index');
 
 
 Route::get('/landingpage', function () {
@@ -73,9 +105,7 @@ Route::get('/about', function () {
     return view('users.about');
 });
 
-Route::get('/shop', function () {
-    return view('users.shop');
-});
+
 
 Route::get('/beli', function () {
     return view('users.beli');
@@ -85,9 +115,6 @@ Route::get('/contact', function () {
     return view('users.contact');
 });
 
-Route::get('/keranjang', function () {
-    return view('users.keranjang');
-});
 
 Route::get('/adminDashboard', function () {
     return view('admin.userManagement');

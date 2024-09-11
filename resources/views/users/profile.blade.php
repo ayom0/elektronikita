@@ -7,82 +7,79 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #306EE8;
+            background-color: #f8fafc;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            color: #fff;
         }
         .container {
-            width: 400px;
-            padding: 20px;
+            width: 700px;
+            padding: 40px;
             background-color: #fff;
-            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
-            color: #333;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        .container:hover {
-            transform: scale(1.05);
-        }
-        h2 {
-            color: #306EE8;
-            margin-bottom: 20px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
         }
         .form-group {
             margin-bottom: 20px;
-            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         .form-group label {
-            display: block;
-            color: #306EE8;
-            margin-bottom: 8px;
+            width: 30%;
             font-weight: bold;
+            color: #333;
         }
         .form-group input {
-            width: 100%;
+            width: 65%;
             padding: 10px;
             box-sizing: border-box;
-            border: 2px solid #ccc;
-            border-radius: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
             outline: none;
-            transition: border-color 0.3s ease;
         }
         .form-group input:focus {
             border-color: #306EE8;
         }
         .form-group input[readonly] {
-            background-color: #f4f4f4;
+            background-color: #f0f0f0;
             cursor: not-allowed;
         }
-        .btn {
-            display: inline-block;
-            padding: 12px;
-            margin: 10px 0;
-            text-align: center;
-            color: #fff;
-            background-color: #306EE8;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            box-sizing: border-box;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
         }
-        .btn:hover {
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-primary {
+            background-color: #306EE8;
+            color: white;
+        }
+        .btn-primary:hover {
             background-color: #2554b0;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .btn-secondary {
+            background-color: #333;
+            color: white;
+        }
+        .btn-secondary:hover {
+            background-color: #444;
         }
         .btn-logout {
-            background-color: #ff4b5c;
+            background-color: red;
+            color: white;
         }
         .btn-logout:hover {
-            background-color: #e03e4e;
+            background-color: darkred;
         }
     </style>
 </head>
@@ -90,51 +87,48 @@
 
 <div class="container">
     <h2>Profil Pengguna</h2>
-    <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" value="user@example.com">
-    </div>
-    <div class="form-group">
-        <label for="password">Password:</label>
-        <input type="password" id="password" value="••••••••" readonly>
-    </div>
-    <div class="form-group">
-        <label for="alamat">Alamat:</label>
-        <input type="text" id="alamat" value="Jl. Contoh No. 123, Jakarta">
-    </div>
-    <div class="form-group">
-        <label for="nomorHp">Nomor HP:</label>
-        <input type="text" id="nomorHp" value="+62 812 3456 7890">
-    </div>
-    <button class="btn" onclick="simpan()">Simpan</button>
-    <button class="btn" onclick="kePesanan()">Halaman Pesanan</button>
-    <button class="btn btn-logout" onclick="logout()">Logout</button>
+    @if(session('success'))
+        <div class="alert alert-success" style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+            {{ session('success') }}
+        </div>
+    @endif
+    <form method="POST" action="{{ route('profile.update') }}">
+        @csrf
+        @method('PUT')
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" value="{{ $user->email }}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" value="••••••••" readonly>
+        </div>
+        <div class="form-group">
+            <label for="alamat">Alamat</label>
+            <input type="text" id="alamat" name="address" value="{{ $user->address }}">
+        </div>
+        <div class="form-group">
+            <label for="nomorHp">Nomor HP</label>
+            <input type="text" id="nomorHp" value="{{ $user->phone_number }}" readonly>
+        </div>
+        <div class="btn-container">
+            <button type="submit" class="btn btn-primary">Simpan</button>
+            <button type="button" class="btn btn-secondary" onclick="window.location.href=''">Halaman Pesanan</button>
+            <button type="button" class="btn btn-logout" onclick="logout()">Logout</button>
+        </div>
+    </form>
 </div>
 
 <script>
-    function simpan() {
-        // Logika untuk menyimpan perubahan
-        alert("Perubahan telah disimpan!");
-        // Contoh: Mengambil nilai input dan simpan ke database
-        const email = document.getElementById('email').value;
-        const alamat = document.getElementById('alamat').value;
-        const nomorHp = document.getElementById('nomorHp').value;
-        
-        console.log("Email:", email);
-        console.log("Alamat:", alamat);
-        console.log("Nomor HP:", nomorHp);
-    }
-
-    function kePesanan() {
-        // Arahkan ke halaman pesanan
-        window.location.href = "pesanan.html";
-    }
-
     function logout() {
-        alert("Anda telah logout!");
-        window.location.href = "login.html";
+        event.preventDefault();
+        document.getElementById('logout-form').submit();
     }
 </script>
+
+<form id="logout-form" action="" method="POST" style="display: none;">
+    @csrf
+</form>
 
 </body>
 </html>

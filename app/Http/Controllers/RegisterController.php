@@ -4,37 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
-use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
-    /**
-     * Menampilkan halaman registrasi.
-     */
     public function create()
     {
-        return view('auth.register'); // Pastikan view ini ada di resources/views/auth/register.blade.php
+        return view('auth.register'); // Return registration view
     }
 
-    /**
-     * Menangani request registrasi pengguna.
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
     public function store(Request $request)
     {
-        // Validasi data input
+        // Validate incoming registration data
         $request->validate([
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'phone_number' => ['required', 'string', 'max:15'],
-            'address' => ['nullable', 'string', 'max:255'],
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|confirmed|min:8',
+            'phone_number' => 'required',
+            'address' => 'nullable',
         ]);
-    
-        // Membuat pengguna baru
+
+        // Create a new user with registration details
         $user = User::create([
             'email' => $request->email,
             'password' => Hash::make($request->password),
@@ -42,14 +32,12 @@ class RegisterController extends Controller
             'address' => $request->address,
             'registration_date' => now(),
         ]);
-    
-        // Memicu event registrasi
-        event(new Registered($user));
-    
-        // Log in pengguna
+
+        // Log the user in
         Auth::login($user);
-    
-        // Redirect ke halaman dashboard pengguna
-        return redirect()->route('usermanagement.index');
+
+        // Redirect to the profile page after registration
+        return redirect()->route('profile');
     }
 }
+

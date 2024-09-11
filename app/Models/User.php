@@ -14,6 +14,7 @@ class User extends Authenticatable
         'password',
         'registration_date',
         'phone_number',
+        'address', // Tambahkan kolom address di sini
         'role', // Menambahkan kolom role
     ];
 
@@ -26,3 +27,4 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 }
+
