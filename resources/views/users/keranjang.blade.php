@@ -98,74 +98,75 @@
         </div>
     </nav>
 
-    <!-- cart -->
-    <section id="cart" class="container my-5 pt-5">
-        <div class="mt-5 py-2 text-center">
-            <h2 class="font-weight-bold">Keranjang</h2>
-            <hr>
-        </div>
-        <div class="cart-content">
-            <table width="100%">
-                <thead>
+   <!-- cart -->
+<section id="cart" class="container my-5 pt-5">
+    <div class="mt-5 py-2 text-center">
+        <h2 class="font-weight-bold">Keranjang</h2>
+        <hr>
+    </div>
+    <div class="cart-content">
+        <table width="100%">
+            <thead>
+                <tr>
+                    <td>Hapus</td>
+                    <td>Gambar</td>
+                    <td>Barang</td>
+                    <td>Harga</td>
+                    <td>Jumlah</td>
+                    <td>Subtotal</td>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse($cart as $item)
                     <tr>
-                        <td>Hapus</td>
-                        <td>Gambar</td>
-                        <td>Barang</td>
-                        <td>Harga</td>
-                        <td>Jumlah</td>
-                        <td>Subtotal</td>
+                        <td><a href="{{ route('cart.remove', $item['id_produk']) }}" class="text-danger"><i class="far fa-times-circle"></i></a></td>
+                        <td><img src="{{ asset('storage/' . $item['foto']) }}" width="100"></td>
+                        <td>{{ $item['nama_produk'] }}</td>
+                        <td>Rp{{ number_format($item['harga'], 2, ',', '.') }}</td>
+                        <td>
+                            <form action="{{ route('cart.update', $item['id_produk']) }}" method="POST" class="update-form">
+                                @csrf
+                                <div class="d-flex align-items-center">
+                                    <input type="number" name="quantity" value="{{ $item['jumlah'] }}" min="1" class="form-control quantity-input">
+                                    <button type="submit" class="btn btn-primary ms-2">Update</button>
+                                </div>
+                            </form>
+                        </td>
+                        <td>Rp{{ number_format($item['harga'] * $item['jumlah'], 2, ',', '.') }}</td>
                     </tr>
-                </thead>
-                <tbody>
-                    @forelse($cart as $item)
-                        <tr>
-                            <td><a href="{{ route('cart.remove', $item['id_produk']) }}" class="text-danger"><i class="far fa-times-circle"></i></a></td>
-                            <td><img src="{{ asset('storage/' . $item['foto']) }}" width="100"></td>
-                            <td>{{ $item['nama_produk'] }}</td>
-                            <td>Rp{{ number_format($item['harga'], 2, ',', '.') }}</td>
-                            <td>
-                                <form action="{{ route('cart.update', $item['id_produk']) }}" method="POST" class="update-form">
-                                    @csrf
-                                    <div class="d-flex align-items-center">
-                                        <input type="number" name="quantity" value="{{ $item['jumlah'] }}" min="1" class="form-control quantity-input">
-                                        <button type="submit" class="btn btn-primary ms-2">Update</button>
-                                    </div>
-                                </form>
-                            </td>
-                            <td>Rp{{ number_format($item['subtotal'], 2, ',', '.') }}</td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="6" class="text-center">Keranjang kosong</td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
-        </div>
-    </section>
+                @empty
+                    <tr>
+                        <td colspan="6" class="text-center">Keranjang kosong</td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+</section>
 
-    <section id="cart-add" class="container">
-        <div class="row">
-            <div id="subtotal" class="col-md-6">
-                <h3>Total keranjang</h3>
-                <table>
-                    <tr>
-                        <td>Subtotal keranjang</td>
-                        <td>Rp10.000.000</td>
-                    </tr>
-                    <tr>
-                        <td>Shipping</td>
-                        <td>Free</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Total</strong></td>
-                        <td><strong>Rp40.000.000</strong></td>
-                    </tr>
-                </table>
-                <button class="normal">Proceed to checkout</button>
-            </div>
+<!-- Total Keranjang -->
+<section id="cart-add" class="container">
+    <div class="row">
+        <div id="subtotal" class="col-md-6">
+            <h3>Total keranjang</h3>
+            <table>
+                <tr>
+                    <td>Subtotal keranjang</td>
+                    <td>Rp{{ number_format($subtotal, 2, ',', '.') }}</td>
+                </tr>
+                <tr>
+                    <td>Ongkir</td>
+                    <td>Rp{{ number_format($ongkir, 2, ',', '.') }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Total</strong></td>
+                    <td><strong>Rp{{ number_format($total, 2, ',', '.') }}</strong></td>
+                </tr>
+            </table>
+            <button class="normal">Proceed to checkout</button>
         </div>
-    </section>
+    </div>
+</section>
 
    <!-- Start Footer -->
    <footer class="bg-dark" id="tempaltemo_footer">

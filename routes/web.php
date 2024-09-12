@@ -60,6 +60,13 @@ use App\Http\Controllers\ProductController;
 
 Route::resource('products', ProductController::class);
 
+//rute details pesanan
+use App\Http\Controllers\OrderController;
+
+Route::get('/order-details', [OrderController::class, 'showOrderDetails'])->name('order.details');
+Route::post('/order-details', [OrderController::class, 'submitOrder'])->name('order.submit');
+
+
 //Rute keranjang
 use App\Http\Controllers\CartController;
 

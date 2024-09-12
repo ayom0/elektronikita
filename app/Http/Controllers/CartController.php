@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -47,7 +48,45 @@ class CartController extends Controller
     public function showCart()
     {
         $cart = session()->get('cart', []);
-        return view('users.keranjang', compact('cart'));
+        $subtotal = 0;
+
+        // Menghitung subtotal dari semua barang di keranjang
+        foreach ($cart as $item) {
+            $subtotal += $item['subtotal'];
+        }
+
+        // Mengambil pengguna yang sedang login
+        $user = Auth::user();
+
+        // Awalan alamat untuk menentukan ongkir
+        $ongkir = 0;
+        if ($user && $user->address) {
+            $awalAlamat = strtolower($user->address[0]); // Mengambil huruf pertama alamat
+            
+            // Menentukan ongkir berdasarkan awalan alamat
+            switch ($awalAlamat) {
+                case 't':
+                    $ongkir = 5000;
+                    break;
+                case 'b':
+                    $ongkir = 10000;
+                    break;
+                case 'j':
+                    $ongkir = 15000;
+                    break;
+                case 's':
+                    $ongkir = 20000;
+                    break;
+                default:
+                    $ongkir = 0; // Ongkir gratis jika tidak memenuhi kondisi
+                    break;
+            }
+        }
+
+        // Menghitung total keseluruhan
+        $total = $subtotal + $ongkir;
+
+        return view('users.keranjang', compact('cart', 'subtotal', 'ongkir', 'total'));
     }
 
     /**

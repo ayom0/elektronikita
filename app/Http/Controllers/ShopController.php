@@ -18,7 +18,7 @@ class ShopController extends Controller
     public function index()
     {
         // Find the category ID for "Gaming Notebook"
-        $gamingNotebookCategory = Category::where('kategori', 'Gaming Notebook')->first();
+        $gamingNotebookCategory = Category::where('kategori', 'GamingNotebook')->first();
 
         if (!$gamingNotebookCategory) {
             // Handle the case where the category is not found
