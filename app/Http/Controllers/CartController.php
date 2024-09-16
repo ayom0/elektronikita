@@ -68,6 +68,9 @@ class CartController extends Controller
                 case 't':
                     $ongkir = 5000;
                     break;
+                case 'p':
+                    $ongkir = 2000;
+                    break;
                 case 'b':
                     $ongkir = 10000;
                     break;

@@ -204,7 +204,8 @@ https://templatemo.com/tm-559-zay-shop
                                     <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                         <li>{{ $product->category->nama_kategori ?? 'Uncategorized' }}</li>
                                     </ul>
-                                    <p class="text-center mb-0">Rp.{{ number_format($product->harga, 2, ',', '.') }}</p>
+                                    <p></p>
+                                    <p class="text-center mb-0"><strong>Rp.{{ number_format($product->harga, 2, ',', '.') }}</strong></p>
                                 </div>
                             </div>
                         </div>
