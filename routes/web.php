@@ -48,6 +48,33 @@ Route::middleware('auth')->group(function () {
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
+use App\Http\Controllers\CheckoutController;
+
+Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+Route::post('/checkout', [CheckoutController::class, 'processCheckout'])->name('checkout.process');
+Route::get('/payment-success/{orderId}', [CheckoutController::class, 'success'])->name('payment.success');
+Route::get('/payment-pending', function () {
+    return view('payment-pending');
+});
+Route::get('/payment-failed', function () {
+    return view('payment-failed');
+});
+
+Route::post('/payment/notification', [CheckoutController::class, 'handlePaymentNotification']);
+Route::get('/payment/notification', [CheckoutController::class, 'handlePaymentNotification']);
+
+use App\Http\Controllers\OrdersayaController;
+
+Route::resource('orders', OrdersayaController::class);
+
+use App\Http\Controllers\TransactionController;
+
+// Route untuk halaman transaksi pengguna
+Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions');
+
+
+
+
 
 
 

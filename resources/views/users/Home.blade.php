@@ -25,6 +25,62 @@ TemplateMo 559 Zay Shop
 https://templatemo.com/tm-559-zay-shop
 
 -->
+<style>
+/* Custom CSS for Banner Hero */
+.carousel-item {
+    position: relative;
+}
+
+.carousel-item img {
+    object-fit: cover; /* Ensures images cover the area */
+    height: 500px; /* Set a fixed height */
+    width: 100%; /* Full width */
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.carousel-caption h1, .carousel-caption h3, .carousel-caption p {
+    margin: 10px 0;
+}
+
+.carousel-caption h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.carousel-caption h3 {
+    font-size: 1.75rem;
+    font-weight: 300;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.carousel-caption p {
+    font-size: 1rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.carousel-control-prev, .carousel-control-next {
+    width: 5%;
+    color: #fff;
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 50%;
+}
+
+</style>
 </head>
 
 <body>
@@ -406,6 +462,7 @@ https://templatemo.com/tm-559-zay-shop
     <script src="assets/home/js/templatemo.js"></script>
     <script src="assets/home/js/custom.js"></script>
     <!-- End Script -->
-</body>
+
+   
 
 </html>
