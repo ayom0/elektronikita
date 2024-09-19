@@ -37,7 +37,7 @@ class RegisterController extends Controller
         Auth::login($user);
 
         // Redirect to the profile page after registration
-        return redirect()->route('profile');
+        return view('users.Home');
     }
 }
 

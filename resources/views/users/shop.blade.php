@@ -259,18 +259,18 @@ footer a:hover {
 
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
                 <div class="flex-fill">
-                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="{{ url('/home') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
+                            <a class="nav-link" href="{{ url('/about') }}">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="shop.html">Shop</a>
+                            <a class="nav-link" href="{{ url('/shop') }}">Shop</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="{{ url('/contact') }}">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -283,13 +283,13 @@ footer a:hover {
                             </div>
                         </div>
                     </div>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <a class="nav-icon position-relative text-decoration-none" href="{{ url('/cart') }}">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">0</span>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <a class="nav-icon position-relative text-decoration-none" href="{{ url('/profile') }}">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
                     </a>
                 </div>
             </div>
@@ -317,8 +317,8 @@ footer a:hover {
                     <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
                 </a>
                 <ul class="collapse show list-unstyled pl-3">
-                    <li><a class="text-decoration-none" href="#">Gaming Notebook</a></li>
-                    <li><a class="text-decoration-none" href="#">Notebook</a></li>
+                    <li><a class="text-decoration-none" href="{{ url('/shop') }}">Gaming Notebook</a></li>
+                    <li><a class="text-decoration-none" href="{{ url('/shopNotebook') }}">Notebook</a></li>
                 </ul>
             </li>
             <li class="pb-3">

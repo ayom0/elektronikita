@@ -29,6 +29,6 @@ class ShopControllerNotebook extends Controller
         }
 
         // Pass the products data to the view
-        return view('users.shopSamsungMonitor', compact('products'));
+        return view('users.shopNotebook', compact('products'));
     }
 }

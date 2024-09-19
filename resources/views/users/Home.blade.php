@@ -80,6 +80,22 @@ https://templatemo.com/tm-559-zay-shop
     border-radius: 50%;
 }
 
+
+/* Mengatur container logo */
+.logo-container {
+    display: flex;
+    align-items: center;  /* Untuk memastikan logo berada di tengah secara vertikal */
+    justify-content: center; /* Agar logo berada di tengah secara horizontal, jika diperlukan */
+    text-decoration: none; /* Menghapus garis bawah pada link */
+    padding: 20px; /* Bisa disesuaikan untuk memberi ruang sekitar logo */
+}
+
+/* Mengatur logo */
+.logo-img {
+    height: 70px;  /* Sesuaikan ukuran logo */
+    max-width: 100%; /* Menjaga aspek rasio gambar */
+    object-fit: contain; /* Menjaga agar gambar tidak terdistorsi */
+}
 </style>
 </head>
 
@@ -108,10 +124,9 @@ https://templatemo.com/tm-559-zay-shop
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
-            ElektronikKita
-            </a>
-
+        <a class="navbar-brand logo-container" href="index.html">
+    <img src="assets/home/img/logo2.png" alt="Logo" class="logo-img">
+</a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -120,16 +135,16 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="{{ url('/home') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
+                            <a class="nav-link" href="{{ url('/about') }}">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="shop.html">Shop</a>
+                            <a class="nav-link" href="{{ url('/shop') }}">Shop</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="{{ url('/contact') }}">Contact</a>
                         </li>
                     </ul>
                 </div>
