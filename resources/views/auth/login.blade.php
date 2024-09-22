@@ -39,7 +39,7 @@
 
 
                 <div class="form-link">
-                    <span>Don't have an account? <a href="" class="link signup-link">Signup</a></span>
+                    <span>Don't have an account? <a href="{{ url('/register') }}" class="link signup-link">Signup</a></span>
                 </div>
             </div>
 

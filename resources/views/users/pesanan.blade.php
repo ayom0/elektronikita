@@ -128,21 +128,6 @@
     background-color: #2554b0;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 }
- /* Mengatur container logo */
- .logo-container {
-    display: flex;
-    align-items: center;  /* Untuk memastikan logo berada di tengah secara vertikal */
-    justify-content: center; /* Agar logo berada di tengah secara horizontal, jika diperlukan */
-    text-decoration: none; /* Menghapus garis bawah pada link */
-    padding: 20px; /* Bisa disesuaikan untuk memberi ruang sekitar logo */
-}
-
-/* Mengatur logo */
-.logo-img {
-    height: 70px;  /* Sesuaikan ukuran logo */
-    max-width: 100%; /* Menjaga aspek rasio gambar */
-    object-fit: contain; /* Menjaga agar gambar tidak terdistorsi */
-}
 
 
     </style>
@@ -172,9 +157,9 @@
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-        <a class="navbar-brand logo-container" href="index.html">
-    <img src="assets/home/img/logo2.png" alt="Logo" class="logo-img">
-</a>
+            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
+                ElektronikKita
+            </a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -182,18 +167,18 @@
 
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
                 <div class="flex-fill">
-                <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/home') }}">Home</a>
+                            <a class="nav-link" href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/about') }}">About</a>
+                            <a class="nav-link" href="about.html">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/shop') }}">Shop</a>
+                            <a class="nav-link" href="shop.html">Shop</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/contact') }}">Contact</a>
+                            <a class="nav-link" href="contact.html">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -206,13 +191,13 @@
                             </div>
                         </div>
                     </div>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <a class="nav-icon position-relative text-decoration-none" href="{{ url('/cart') }}">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <a class="nav-icon position-relative text-decoration-none" href="{{ url('/profile') }}">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
-                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
+                        <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
                     </a>
                 </div>
             </div>
@@ -355,7 +340,7 @@
 <script>
     function kembaliKeProfil() {
         // Redirect ke halaman profil
-        window.location.href = "profil.html";
+        window.location.href = "{{ url('/profile') }}";
     }
 </script>
 

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Profil</title>
     <style>
-        body {
+       body {
             font-family: 'Poppins', sans-serif;
             background-color: #f8fafc;
             margin: 0;
@@ -113,7 +113,7 @@
         </div>
         <div class="btn-container">
             <button type="submit" class="btn btn-primary">Simpan</button>
-            <button type="button" class="btn btn-secondary" onclick="window.location.href=''">Halaman Pesanan</button>
+            <button type="button" class="btn btn-secondary" onclick="window.location.href='{{ url('/pesanan') }}'">Halaman Pesanan</button>
             <button type="button" class="btn btn-logout" onclick="logout()">Logout</button>
         </div>
     </form>
@@ -126,7 +126,7 @@
     }
 </script>
 
-<form id="logout-form" action="" method="POST" style="display: none;">
+<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
     @csrf
 </form>
 

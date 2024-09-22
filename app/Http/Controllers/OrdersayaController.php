@@ -10,7 +10,7 @@ class OrdersayaController extends Controller
     public function index()
     {
         $orders = Order::all();
-        return view('admin.OredersManagement', compact('orders'));
+        return view('admin.OrdersManagement', compact('orders'));
     }
 
     public function store(Request $request)
@@ -23,6 +23,7 @@ class OrdersayaController extends Controller
             'subtotal' => 'required|numeric',
             'shipping_cost' => 'required|numeric',
             'total' => 'required|numeric',
+            'payment_status' => 'nullable|in:pending,success,failed', // Add validation for payment_status
         ]);
 
         Order::create($request->all());
@@ -40,6 +41,7 @@ class OrdersayaController extends Controller
             'subtotal' => 'required|numeric',
             'shipping_cost' => 'required|numeric',
             'total' => 'required|numeric',
+            'payment_status' => 'nullable|in:pending,success,failed', // Add validation for payment_status
         ]);
 
         $order = Order::findOrFail($id);
@@ -56,4 +58,3 @@ class OrdersayaController extends Controller
         return redirect()->route('orders.index')->with('success', 'Order deleted successfully.');
     }
 }
-

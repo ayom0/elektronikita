@@ -13,14 +13,6 @@ use App\Http\Controllers\UserManagementController;
 
 
 
-
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-
 use App\Http\Controllers\CategoryController;
 
 Route::resource('categories', CategoryController::class);
@@ -30,6 +22,7 @@ Route::resource('categories', CategoryController::class);
 
 Route::middleware('guest')->group(function () {
     // Rute Register
+    Route::get('/', [RegisterController::class, 'create'])->name('register');
     Route::get('/register', [RegisterController::class, 'create'])->name('register');
     Route::post('/register', [RegisterController::class, 'store']);
 
@@ -46,6 +39,12 @@ Route::middleware('auth')->group(function () {
     // Rute Profile
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    
+    // Logout route
+    Route::post('/logout', function () {
+        Auth::logout();
+        return redirect('/login');
+    })->name('logout');
 });
 
 use App\Http\Controllers\CheckoutController;
@@ -67,10 +66,11 @@ use App\Http\Controllers\OrdersayaController;
 
 Route::resource('orders', OrdersayaController::class);
 
-use App\Http\Controllers\TransactionController;
+
+//use App\Http\Controllers\TransactionController;
 
 // Route untuk halaman transaksi pengguna
-Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions');
+//Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions');
 
 
 

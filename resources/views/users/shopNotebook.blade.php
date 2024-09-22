@@ -367,7 +367,7 @@ footer a:hover {
                     <div class="col-md-6">
                         <ul class="list-inline shop-top-menu pb-3 pt-1">
                             <li class="list-inline-item">
-                                <a class="h3 text-dark text-decoration-none mr-3" href="#">Notebook</a>
+                                <a class="h3 text-dark text-decoration-none mr-3" href="">Notebook</a>
                             </li>
                         </ul>
                     </div>

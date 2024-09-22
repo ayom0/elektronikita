@@ -41,6 +41,7 @@
                         <th>Subtotal</th>
                         <th>Shipping Cost</th>
                         <th>Total</th>
+                        <th>Payment Status</th> <!-- Added Payment Status column -->
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -54,6 +55,7 @@
                         <td>{{ $order->subtotal }}</td>
                         <td>{{ $order->shipping_cost }}</td>
                         <td>{{ $order->total }}</td>
+                        <td>{{ $order->payment_status }}</td> <!-- Display Payment Status -->
                         <td class="actions">
                             <button class="edit" 
                                     data-id="{{ $order->id }}" 
@@ -63,7 +65,8 @@
                                     data-message="{{ $order->message }}" 
                                     data-subtotal="{{ $order->subtotal }}" 
                                     data-shipping-cost="{{ $order->shipping_cost }}" 
-                                    data-total="{{ $order->total }}">
+                                    data-total="{{ $order->total }}"
+                                    data-payment-status="{{ $order->payment_status }}"> <!-- Added Payment Status data -->
                                 <i class="fas fa-pencil-alt"></i>
                             </button>
                             <form action="{{ route('orders.destroy', $order->id) }}" method="POST" style="display:inline;">
@@ -113,6 +116,14 @@
                     <label for="add-total">Total:</label>
                     <input type="number" id="add-total" name="total" step="0.01" required>
                 </div>
+                <div class="form-group">
+                    <label for="add-payment-status">Payment Status:</label>
+                    <select id="add-payment-status" name="payment_status">
+                        <option value="pending">Pending</option>
+                        <option value="success">Success</option>
+                        <option value="failed">Failed</option>
+                    </select>
+                </div>
                 <button type="submit">Add Order</button>
             </form>
         </div>
@@ -153,63 +164,73 @@
                     <label for="edit-total">Total:</label>
                     <input type="number" id="edit-total" name="total" step="0.01" required>
                 </div>
+                <div class="form-group">
+                    <label for="edit-payment-status">Payment Status:</label>
+                    <select id="edit-payment-status" name="payment_status">
+                        <option value="pending">Pending</option>
+                        <option value="success">Success</option>
+                        <option value="failed">Failed</option>
+                    </select>
+                </div>
                 <button type="submit">Update Order</button>
             </form>
         </div>
     </div>
 
     <script>
-        // Toggle sidebar visibility
-        document.getElementById('toggleSidebarBtn').addEventListener('click', function() {
-            document.getElementById('sidebar').classList.toggle('hidden');
-            document.getElementById('mainContent').classList.toggle('expanded');
-        });
+        document.addEventListener('DOMContentLoaded', function () {
+            // Add Order Modal
+            const addOrderBtn = document.getElementById('addOrderBtn');
+            const addOrderModal = document.getElementById('addOrderModal');
+            const addOrderForm = document.getElementById('addOrderForm');
+            const closeAddOrderBtn = addOrderModal.querySelector('.close-btn');
 
-        // Show Add Order Modal
-        document.getElementById('addOrderBtn').addEventListener('click', function() {
-            document.getElementById('addOrderModal').style.display = 'block';
-        });
-
-        // Show Edit Order Modal
-        document.querySelectorAll('.edit').forEach(button => {
-            button.addEventListener('click', function() {
-                const id = this.getAttribute('data-id');
-                const userId = this.getAttribute('data-user-id');
-                const recipientName = this.getAttribute('data-recipient-name');
-                const email = this.getAttribute('data-email');
-                const message = this.getAttribute('data-message');
-                const subtotal = this.getAttribute('data-subtotal');
-                const shippingCost = this.getAttribute('data-shipping-cost');
-                const total = this.getAttribute('data-total');
-
-                const form = document.getElementById('editOrderForm');
-                form.action = `/orders/${id}`;
-                form.querySelector('#edit-user-id').value = userId;
-                form.querySelector('#edit-recipient-name').value = recipientName;
-                form.querySelector('#edit-email').value = email;
-                form.querySelector('#edit-message').value = message;
-                form.querySelector('#edit-subtotal').value = subtotal;
-                form.querySelector('#edit-shipping-cost').value = shippingCost;
-                form.querySelector('#edit-total').value = total;
-
-                document.getElementById('editOrderModal').style.display = 'block';
+            addOrderBtn.addEventListener('click', function () {
+                addOrderModal.style.display = 'block';
             });
-        });
 
-        // Close Modals
-        document.querySelectorAll('.close-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                this.closest('.modal').style.display = 'none';
+            closeAddOrderBtn.addEventListener('click', function () {
+                addOrderModal.style.display = 'none';
             });
-        });
 
-        // Close modals when clicking outside
-        window.addEventListener('click', function(event) {
-            if (event.target.classList.contains('modal')) {
-                event.target.style.display = 'none';
-            }
+            window.addEventListener('click', function (event) {
+                if (event.target === addOrderModal) {
+                    addOrderModal.style.display = 'none';
+                }
+            });
+
+            // Edit Order Modal
+            const editOrderModal = document.getElementById('editOrderModal');
+            const editOrderForm = document.getElementById('editOrderForm');
+            const closeEditOrderBtn = editOrderModal.querySelector('.close-btn');
+
+            document.querySelectorAll('.edit').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    const id = btn.getAttribute('data-id');
+                    document.getElementById('edit-user-id').value = btn.getAttribute('data-user-id');
+                    document.getElementById('edit-recipient-name').value = btn.getAttribute('data-recipient-name');
+                    document.getElementById('edit-email').value = btn.getAttribute('data-email');
+                    document.getElementById('edit-message').value = btn.getAttribute('data-message');
+                    document.getElementById('edit-subtotal').value = btn.getAttribute('data-subtotal');
+                    document.getElementById('edit-shipping-cost').value = btn.getAttribute('data-shipping-cost');
+                    document.getElementById('edit-total').value = btn.getAttribute('data-total');
+                    document.getElementById('edit-payment-status').value = btn.getAttribute('data-payment-status');
+
+                    editOrderForm.action = `/orders/${id}`;
+                    editOrderModal.style.display = 'block';
+                });
+            });
+
+            closeEditOrderBtn.addEventListener('click', function () {
+                editOrderModal.style.display = 'none';
+            });
+
+            window.addEventListener('click', function (event) {
+                if (event.target === editOrderModal) {
+                    editOrderModal.style.display = 'none';
+                }
+            });
         });
     </script>
 </body>
 </html>
-

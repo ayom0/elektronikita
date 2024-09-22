@@ -39,7 +39,7 @@
                 </div>
             </form>
             <div class="form-link">
-                <span>Already have an account? <a href="#" class="link login-link">Login</a></span>
+                <span>Already have an account? <a href="{{ url('/login') }}" class="link login-link">Login</a></span>
             </div>
         </div>
         <div class="line"></div>
