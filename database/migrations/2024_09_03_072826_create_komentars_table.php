@@ -12,9 +12,8 @@ class CreateKomentarsTable extends Migration
             $table->id('id_komentar'); // Primary key with 'id_komentar'
             $table->foreignId('id_user')->constrained('users')->onDelete('cascade'); // Foreign key to 'users'
             $table->foreignId('id_produk')->constrained('products', 'id_produk')->onDelete('cascade'); // Foreign key to 'products'
+            $table->string('nama');
             $table->text('isi_komentar'); // Comment content
-            $table->date('tanggal'); // Date of comment
-            $table->unsignedTinyInteger('rating'); // Rating (1-255)
             $table->timestamps(); // Timestamps
         });
     }

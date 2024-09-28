@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 
-class ShopControllerGamingMonitor extends Controller
+class ShopVgaController extends Controller
 {
     /**
      * Display a listing of the products.
@@ -16,19 +16,19 @@ class ShopControllerGamingMonitor extends Controller
     public function index()
     {
         // Find the category ID for "Gaming Notebook"
-        $MonitorGamingCategory = Category::where('kategori', 'MonitorGaming')->first();
+        $VGACategory = Category::where('kategori', 'VGA')->first();
 
-        if (!$MonitorGamingCategory) {
+        if (!$VGACategory) {
             // Handle the case where the category is not found
             $products = collect(); // Return an empty collection
         } else {
             // Retrieve products with the category ID for "Gaming Notebook"
-            $products = Product::where('id_kategori', $MonitorGamingCategory->id_kategori)
+            $products = Product::where('id_kategori', $VGACategory->id_kategori)
                                ->with('category')
                                ->get();
         }
 
         // Pass the products data to the view
-        return view('users.shopSamsungMonitor', compact('products'));
+        return view('users.shopVGA', compact('products'));
     }
 }

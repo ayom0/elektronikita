@@ -129,6 +129,22 @@
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Mengatur container logo */
+.logo-container {
+    display: flex;
+    align-items: center;  /* Untuk memastikan logo berada di tengah secara vertikal */
+    justify-content: center; /* Agar logo berada di tengah secara horizontal, jika diperlukan */
+    text-decoration: none; /* Menghapus garis bawah pada link */
+    padding: 20px; /* Bisa disesuaikan untuk memberi ruang sekitar logo */
+}
+
+/* Mengatur logo */
+.logo-img {
+    height: 70px;  /* Sesuaikan ukuran logo */
+    max-width: 100%; /* Menjaga aspek rasio gambar */
+    object-fit: contain; /* Menjaga agar gambar tidak terdistorsi */
+}
+
 
     </style>
 </head>
@@ -157,9 +173,9 @@
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
-            <a class="navbar-brand text-success logo h1 align-self-center" href="index.html">
-                ElektronikKita
-            </a>
+        <a class="navbar-brand logo-container" href="index.html">
+    <img src="assets/home/img/logo2.png" alt="Logo" class="logo-img">
+</a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -168,17 +184,17 @@
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                    <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/home') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
+                            <a class="nav-link" href="{{ url('/about') }}">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="shop.html">Shop</a>
+                            <a class="nav-link" href="{{ url('/shop') }}">Shop</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="{{ url('/contact') }}">Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -211,7 +227,7 @@
 
     <div class="order-card">
         <div class="order-details">
-            <img src="https://via.placeholder.com/100" alt="Gambar Produk" class="order-image">
+            <img src="{{ asset('assets/home/img/rogstrix1.jpg') }}" alt="Gambar Produk" class="order-image">
             <div class="order-info">
                 <h3 class="product-name">Nama Barang 1</h3>
                 <p class="product-price">Harga: Rp 150,000</p>
@@ -220,20 +236,22 @@
             </div>
         </div>
         <div class="order-status dikirim">Dikirim</div>
-    </div>
+        </div>
 
-    <div class="order-card">
+
+        <div class="order-card">
         <div class="order-details">
-            <img src="https://via.placeholder.com/100" alt="Gambar Produk" class="order-image">
+            <img src="{{ asset('assets/home/img/rog.jpg') }}" alt="Gambar Produk" class="order-image">
             <div class="order-info">
-                <h3 class="product-name">Nama Barang 2</h3>
-                <p class="product-price">Harga: Rp 200,000</p>
-                <p class="product-quantity">Jumlah: 1</p>
-                <p class="product-subtotal">Sub Total: Rp 200,000</p>
+                <h3 class="product-name">Nama Barang 1</h3>
+                <p class="product-price">Harga: Rp 150,000</p>
+                <p class="product-quantity">Jumlah: 2</p>
+                <p class="product-subtotal">Sub Total: Rp 300,000</p>
             </div>
         </div>
         <div class="order-status diproses">Diproses</div>
-    </div>
+        </div>
+
 
     <button class="btn-profile" onclick="kembaliKeProfil()">Kembali ke Profil</button>
 </div>

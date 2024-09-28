@@ -93,6 +93,36 @@ use App\Http\Controllers\OrderController;
 Route::get('/order-details', [OrderController::class, 'showOrderDetails'])->name('order.details');
 Route::post('/order-details', [OrderController::class, 'submitOrder'])->name('order.submit');
 
+//rute CRUD contact users
+use App\Http\Controllers\CRUDContactController;
+
+Route::resource('contacts', CRUDContactController::class);
+
+//detail-product
+use App\Http\Controllers\ProductDetailsController;
+
+Route::get('/beli/{id_produk}', [ProductDetailsController::class, 'show'])->name('product.details');
+
+//rute CRUDkomen
+use App\Http\Controllers\CRUDKomentar;
+
+Route::resource('komentars', CRUDKomentar::class);
+
+
+//rute komentar
+use App\Http\Controllers\KomentarController;
+
+Route::post('/komentar/store', [KomentarController::class, 'store'])->middleware('auth')->name('komentar.store');
+
+
+use App\Http\Controllers\ContactController;
+
+// Rute untuk menampilkan form kontak
+Route::get('/contact', [ContactController::class, 'showForm'])->name('contact.form');
+
+// Rute untuk mengirim pesan
+Route::post('/contact/submit', [ContactController::class, 'submit'])->name('contact.submit');
+
 
 //Rute keranjang
 use App\Http\Controllers\CartController;
@@ -101,6 +131,12 @@ Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
 Route::get('/add-to-cart/{id}', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/remove-from-cart/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 Route::post('/update-cart/{id}', [CartController::class, 'updateCart'])->name('cart.update');
+
+
+//Rute Home
+use App\Http\Controllers\HomeController;
+
+Route::get('/home', [HomeController::class, 'index'])->name('Home.index');
 
 
 //Rute ShopGaming Notebook
@@ -116,7 +152,52 @@ Route::get('/shopNotebook', [ShopControllerNotebook::class, 'index'])->name('sho
 //Rute ShopGaming Notebook
 use App\Http\Controllers\ShopControllerGamingMonitor;
 
-Route::get('/shopSamsungMonitor', [ShopControllerGamingMonitor::class, 'index'])->name('shopSamsungMonitor.index');
+Route::get('/shopMonitorGaming', [ShopControllerGamingMonitor::class, 'index'])->name('shopSamsungMonitor.index');
+
+//Rute ShopGaming Notebook
+use App\Http\Controllers\ShopControllerSmartMonitor;
+
+Route::get('/shopMonitorSmart', [ShopControllerSmartMonitor::class, 'index'])->name('shopSamsungMonitor.index');
+
+//Rute ShopVGA
+use App\Http\Controllers\ShopVgaController;
+
+Route::get('/shopVGA', [ShopVgaController::class, 'index'])->name('shopSamsungMonitor.index');
+
+//Rute ShopCPU
+use App\Http\Controllers\ShopCPUController;
+
+Route::get('/shopCPU', [ShopCPUController::class, 'index'])->name('shopSamsungMonitor.index');
+
+//Rute ShopCasing
+use App\Http\Controllers\ShopCasingController;
+
+Route::get('/shopCasing', [ShopCasingController::class, 'index'])->name('shopSamsungMonitor.index');
+
+//Rute ShopRAM
+use App\Http\Controllers\ShopRAMController;
+
+Route::get('/shopRAM', [ShopRAMController::class, 'index'])->name('shopSamsungMonitor.index');
+
+//Rute ShopPSU
+use App\Http\Controllers\ShopPSUController;
+
+Route::get('/shopPSU', [ShopPSUController::class, 'index'])->name('shopSamsungMonitor.index');
+
+//Rute ShopRAM
+use App\Http\Controllers\ShopCollerController;
+
+Route::get('/shopCooler', [ShopCollerController::class, 'index'])->name('shopSamsungMonitor.index');
+
+
+//Rute dashboard admin
+use App\Http\Controllers\AdminDashboardController;
+
+Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+
+Route::get('/PesananManagement', function () {
+    return view('admin.PesananManagement');
+});
 
 
 Route::get('/landingpage', function () {
@@ -131,9 +212,7 @@ Route::get('/pesanan', function () {
     return view('users.pesanan');
 });
 
-Route::get('/home', function () {
-    return view('users.Home');
-});
+
 
 Route::get('/about', function () {
     return view('users.about');
@@ -141,13 +220,9 @@ Route::get('/about', function () {
 
 
 
-Route::get('/beli', function () {
-    return view('users.beli');
-});
 
-Route::get('/contact', function () {
-    return view('users.contact');
-});
+
+
 
 
 Route::get('/adminDashboard', function () {

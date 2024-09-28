@@ -31,13 +31,13 @@ class RegisterController extends Controller
             'phone_number' => $request->phone_number,
             'address' => $request->address,
             'registration_date' => now(),
+            'role' => 'user' // Assuming a default role is needed
         ]);
 
         // Log the user in
         Auth::login($user);
 
-        // Redirect to the profile page after registration
-        return view('users.Home');
+        // Redirect to the home page after registration
+        return redirect()->route('Home.index')->with('success', 'Registration successful! Welcome to the site.');
     }
 }
-

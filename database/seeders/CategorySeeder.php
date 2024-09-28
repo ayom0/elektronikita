@@ -17,6 +17,9 @@ class CategorySeeder extends Seeder
             ['kategori' => 'VGA', 'jenis_kategori' => 'KomponenPC', 'created_at' => now(), 'updated_at' => now()],
             ['kategori' => 'CPU', 'jenis_kategori' => 'KomponenPC', 'created_at' => now(), 'updated_at' => now()],
             ['kategori' => 'Ram', 'jenis_kategori' => 'KomponenPC', 'created_at' => now(), 'updated_at' => now()],
+            ['kategori' => 'Casing', 'jenis_kategori' => 'KomponenPC', 'created_at' => now(), 'updated_at' => now()],
+            ['kategori' => 'PSU', 'jenis_kategori' => 'KomponenPC', 'created_at' => now(), 'updated_at' => now()],
+            ['kategori' => 'Coller', 'jenis_kategori' => 'KomponenPC', 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 }

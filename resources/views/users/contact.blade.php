@@ -145,38 +145,47 @@ https://templatemo.com/tm-559-zay-shop
     </div>
 
    
-
-    <!-- Start Contact -->
-    <div class="container py-5">
-        <div class="row py-5">
-            <form class="col-md-9 m-auto" method="post" role="form">
-                <div class="row">
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputname">Name</label>
-                        <input type="text" class="form-control mt-1" id="name" name="name" placeholder="Name">
-                    </div>
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="inputemail">Email</label>
-                        <input type="email" class="form-control mt-1" id="email" name="email" placeholder="Email">
-                    </div>
+<!-- Start Contact -->
+<div class="container py-5">
+    <div class="row py-5">
+        <!-- Notifikasi pesan sukses -->
+        @if(session('success'))
+            <div class="alert alert-success col-md-9 m-auto">
+                {{ session('success') }}
+            </div>
+        @endif
+        
+        <form class="col-md-9 m-auto" method="post" role="form" action="{{ route('contact.submit') }}">
+            @csrf <!-- Laravel CSRF protection -->
+            <div class="row">
+                <div class="form-group col-md-6 mb-3">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control mt-1" id="name" name="name" placeholder="Name" required>
                 </div>
-                <div class="mb-3">
-                    <label for="inputsubject">ALamat</label>
-                    <input type="text" class="form-control mt-1" id="subject" name="subject" placeholder="Subject">
+                <div class="form-group col-md-6 mb-3">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control mt-1" id="email" name="email" placeholder="Email" required>
                 </div>
-                <div class="mb-3">
-                    <label for="inputmessage">Mesan</label>
-                    <textarea class="form-control mt-1" id="message" name="message" placeholder="Message" rows="8"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="address">Alamat</label>
+                <input type="text" class="form-control mt-1" id="address" name="address" placeholder="Address" required>
+            </div>
+            <div class="mb-3">
+                <label for="message">Pesan</label>
+                <textarea class="form-control mt-1" id="message" name="message" placeholder="Message" rows="8" required></textarea>
+            </div>
+            <div class="row">
+                <div class="col text-end mt-2">
+                    <button type="submit" class="btn btn-success btn-lg px-3">Kirim</button>
                 </div>
-                <div class="row">
-                    <div class="col text-end mt-2">
-                        <button type="submit" class="btn btn-success btn-lg px-3">Kirim</button>
-                    </div>
-                </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
-    <!-- End Contact -->
+</div>
+<!-- End Contact -->
+
+
 
 
     <!-- Start Footer -->

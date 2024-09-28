@@ -48,7 +48,7 @@
 
             <div class="media-options">
                 <a href="#" class="field google">
-                    <img src="#" alt="" class="google-img">
+                <i class='bx bxl-google google-icon'></i>
                     <span>Login with Google</span>
                 </a>
             </div>

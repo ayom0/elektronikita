@@ -46,12 +46,20 @@
             <h2>Admin Panel</h2>
         </div>
         <ul>
-            <li><a href="#user-management">User Management</a></li>
-            <li><a href="#payments">Payments</a></li>
-            <li><a href="#kategori">Kategori</a></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="#shipping">Shipping</a></li>
-            <li><a href="#landing-pages">Landing Pages</a></li>
+            <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url('/usermanagement') }}">Usermanagement</a></li>
+            <li><a href="{{ url('/products') }}">ProductManagement</a></li>
+            <li><a href="{{ url('/categories') }}">CategoryManagement</a></li>
+            <li><a href="{{ url('/komentars') }}">komentarManagement</a></li>
+            <li><a href="{{ url('/orders') }}">TransaksiManagement</a></li>
+            <li><a href="{{ url('/contacts') }}">contactManagement</a></li>
+            <li><a href="{{ url('/PesananManagement') }}">PesananManagement</a></li><li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            Logout
+        </a></li>
+    </ul>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
         </ul>
     </div>
 

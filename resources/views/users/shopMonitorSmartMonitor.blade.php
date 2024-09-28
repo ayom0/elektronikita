@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Homepages</title>
+    <title>shop</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="assets/home/css/templatemo.css">
     <link rel="stylesheet" href="assets/home/css/custom.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    
 
     <!-- Load fonts style after rendering the layout styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
@@ -24,62 +23,183 @@ TemplateMo 559 Zay Shop
 
 https://templatemo.com/tm-559-zay-shop
 
--->
-<style>
-/* Custom CSS for Banner Hero */
-.carousel-item {
-    position: relative;
+--><style>
+/* Custom Styles for Shop Page */
+body {
+    background-color: #f9f9f9;
 }
 
-.carousel-item img {
-    object-fit: cover; /* Ensures images cover the area */
-    height: 500px; /* Set a fixed height */
-    width: 100%; /* Full width */
-}
-
-.carousel-caption {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
-    padding: 20px;
+/* Card Styling */
+.card {
+    border: none;
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.carousel-caption h1, .carousel-caption h3, .carousel-caption p {
-    margin: 10px 0;
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.carousel-caption h1 {
-    font-size: 2.5rem;
+/* Header and Navigation Styling */
+.navbar {
+    background-color: #fff;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.navbar-brand {
+    color: #306EE8;
     font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
-.carousel-caption h3 {
-    font-size: 1.75rem;
-    font-weight: 300;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+.navbar-nav .nav-link {
+    color: #333;
+    font-weight: 500;
 }
 
-.carousel-caption p {
-    font-size: 1rem;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+.navbar-nav .nav-link:hover {
+    color: #306EE8;
 }
 
-.carousel-control-prev, .carousel-control-next {
-    width: 5%;
+/* Category Menu */
+.templatemo-accordion a {
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.templatemo-accordion a:hover {
+    color: #306EE8;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #333;
     color: #fff;
 }
 
-.carousel-control-prev-icon, .carousel-control-next-icon {
-    background-color: rgba(0,0,0,0.5);
-    border-radius: 50%;
+footer a {
+    color: #306EE8;
 }
 
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Icons */
+.footer-icons .list-inline-item {
+    border: 1px solid #fff;
+}
+
+.footer-icons .list-inline-item a {
+    color: #fff;
+}
+
+.footer-icons .list-inline-item a:hover {
+    color: #306EE8;
+}
+
+/* Subscribe Button */
+.input-group-text.btn-success {
+    background-color: #306EE8;
+    border: none;
+    color: #fff;
+}
+
+.input-group-text.btn-success:hover {
+    background-color: #2454c4;
+}
+
+/* Custom Styles for Category Menu */
+.category-menu {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.category-menu h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.category-menu ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+
+.category-menu li {
+    margin-bottom: 15px;
+}
+
+.category-menu a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.category-menu a:hover {
+    color: #306EE8;
+}
+
+.category-menu .collapse {
+    transition: height 0.3s ease;
+}
+
+.category-menu .collapse.show {
+    height: auto;
+}
+
+.category-menu .collapse ul {
+    padding-left: 1rem;
+    margin: 0;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animated {
+    animation: fadeInUp 0.6s ease-in-out;
+}
+
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animated {
+    animation: fadeInUp 0.6s ease-in-out;
+}
 
 /* Mengatur container logo */
 .logo-container {
@@ -96,7 +216,10 @@ https://templatemo.com/tm-559-zay-shop
     max-width: 100%; /* Menjaga aspek rasio gambar */
     object-fit: contain; /* Menjaga agar gambar tidak terdistorsi */
 }
-</style>
+
+
+    </style>
+
 </head>
 
 <body>
@@ -106,9 +229,9 @@ https://templatemo.com/tm-559-zay-shop
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">ElektronikKita@company.com</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">ElektronikKita@gmail.com</a>
                     <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">08123213</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">089231372</a>
                 </div>
                 <div>
                     <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
@@ -127,13 +250,16 @@ https://templatemo.com/tm-559-zay-shop
         <a class="navbar-brand logo-container" href="index.html">
     <img src="assets/home/img/logo2.png" alt="Logo" class="logo-img">
 </a>
+
+
+
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="templatemo_main_nav">
                 <div class="flex-fill">
-                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/home') }}">Home</a>
                         </li>
@@ -173,170 +299,116 @@ https://templatemo.com/tm-559-zay-shop
     <!-- Close Header -->
 
     <!-- Modal -->
-    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="w-100 pt-1 mb-5 text-right">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form action="" method="get" class="modal-content modal-body border-0 p-0">
-                <div class="input-group mb-2">
-                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
-                    <button type="submit" class="input-group-text bg-success text-light">
-                        <i class="fa fa-fw fa-search text-white"></i>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
+    
 
 
 
-    <!-- Start Banner Hero -->
-    <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./assets/home/img/laptophome.jpg" alt="">
-                        </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left align-self-center">
-                                <h1 class="h1 text-success"><b>ElektronikKita</b></h1>
-                                <h3 class="h2">Laptop</h3>
-                                <p>
-                                    Laptop gaming dengan performa yang gahar dengan harga yang terjangkau 
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./assets/home/img/handphonehome.png" alt="">
-                        </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left">
-                                <h1 class="h1">Meyediakan Handphone</h1>
-                                <h3 class="h2">Samsung S24 Ultra</h3>
-                                <p>
-                                    Handphone dari samsung dengan kamera yang sangat jernih dengan berbgai fitur menarik. 
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="./assets/home/img/tvhome.jpg" alt="">
-                        </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left">
-                                <h1 class="h1">Pastinya Terdapat TV</h1>
-                                <h3 class="h2">TV toshiba </h3>
-                                <p>
-                                    Temani hari-hari mu di sova sambil menonton berbagai film dengan layar yang tajam dan juga luas
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="prev">
-            <i class="fas fa-chevron-left"></i>
-        </a>
-        <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel" role="button" data-bs-slide="next">
-            <i class="fas fa-chevron-right"></i>
-        </a>
-    </div>
-    <!-- End Banner Hero -->
-
-
-    <!-- Start Categories of The Month -->
-    <section class="container py-5">
-        <div class="row text-center pt-3">
-            <div class="col-lg-6 m-auto">
-                <h1 class="h1">kategori Produk terpopuler</h1>
-                <p>
-                    Ini adalah kategori produk terpopuler bulan ini.
-                </p>
-            </div>
-        </div>
+<!-- Start Content -->
+<div class="container py-5">
         <div class="row">
-            <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="./assets/home/img/lap1.png" class="rounded-circle img-fluid border"></a>
-                <h5 class="text-center mt-3 mb-3">Gaming Notebook</h5>
-                <p class="text-center"><a class="btn btn-success">Lihat produk</a></p>
-            </div>
-            <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="./assets/home/img/monitorhome.png" class="rounded-circle img-fluid border"></a>
-                <h2 class="h5 text-center mt-3 mb-3">Monitor Gaming</h2>
-                <p class="text-center"><a class="btn btn-success">Lihar produk</a></p>
-            </div>
-            <div class="col-12 col-md-4 p-5 mt-3">
-                <a href="#"><img src="./assets/home/img/vgahome.png" class="rounded-circle img-fluid border"></a>
-                <h2 class="h5 text-center mt-3 mb-3">VGA</h2>
-                <p class="text-center"><a class="btn btn-success">Lihat produk</a></p>
-            </div>
-        </div>
-    </section>
-    <!-- End Categories of The Month -->
 
+        <div class="col-lg-3">
+    <div class="category-menu animated">
+        <h1 class="h2 pb-4">Kategori</h1>
+        <ul class="list-unstyled templatemo-accordion">
+            <li class="pb-3">
+                <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                    Laptop
+                    <i class="fa fa-fw fa-chevron-circle-down mt-1"></i>
+                </a>
+                <ul class="collapse show list-unstyled pl-3">
+                    <li><a class="text-decoration-none" href="{{ url('/shop') }}">Gaming Notebook</a></li>
+                    <li><a class="text-decoration-none" href="{{ url('/shopNotebook') }}">Notebook</a></li>
+                </ul>
+            </li>
+            <li class="pb-3">
+                <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                    Monitor
+                    <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                </a>
+                <ul id="collapseTwo" class="collapse list-unstyled pl-3">
+                    <li><a class="text-decoration-none" href="{{ url('/shopMonitorGaming') }}">Gaming</a></li>
+                    <li><a class="text-decoration-none" href="{{ url('/shopMonitorSmart') }}">Smart</a></li>
+                </ul>
+            </li>
+            <li class="pb-3">
+                <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                    Aksesoris
+                    <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                </a>
+                <ul id="collapseThree" class="collapse list-unstyled pl-3">
+                    <li><a class="text-decoration-none" href="#">Headphone</a></li>
+                    <li><a class="text-decoration-none" href="#">Mouse</a></li>
+                    <li><a class="text-decoration-none" href="#">Keyboard</a></li>
+                    <li><a class="text-decoration-none" href="#">Meja/Kursi</a></li>
+                </ul>
+            </li>
+            <li class="pb-3">
+                <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
+                    Komponen PC
+                    <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
+                </a>
+                <ul id="collapseFour" class="collapse list-unstyled pl-3">
+                    <li><a class="text-decoration-none" href="{{ url('/shopVGA') }}">VGA</a></li>
+                    <li><a class="text-decoration-none" href="{{ url('/shopCPU') }}">CPU</a></li>
+                    <li><a class="text-decoration-none" href="{{ url('/shopCasing') }}">Casing</a></li>
+                    <li><a class="text-decoration-none" href="{{ url('/shopPSU') }}">PSU</a></li>
+                    <li><a class="text-decoration-none" href="{{ url('/shopRAM') }}">Ram/Rom</a></li>
+                    <li><a class="text-decoration-none" href="{{ url('/shopCooler') }}">Cooler</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
 
-    <!-- Start Featured Product -->
-    <section class="bg-light">
-        <div class="container py-5">
-            <div class="row text-center py-3">
-                <div class="col-lg-6 m-auto">
-                    <h1 class="h1">Produk terbaru</h1>
-                    <p>
-                        Dapatkan produk yang belum lama release.
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-    @foreach ($products as $product)
-        <div class="col-md-4">
-            <div class="card mb-4 product-wap rounded-0">
-                <div class="card rounded-0">
-                    <img class="card-img rounded-0 img-fluid" src="{{ asset('storage/' . $product->foto) }}" alt="{{ $product->nama_produk }}">
-                    <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
-                        <ul class="list-unstyled">
-                            <li><a class="btn btn-success text-white" href="#"><i class="far fa-heart"></i></a></li>
-                            <li><a class="btn btn-success text-white mt-2" href="#"><i class="far fa-eye"></i></a></li>
-                            <li><a class="btn btn-success text-white mt-2" href="{{ route('cart.add', $product->id_produk) }}"><i class="fas fa-cart-plus"></i></a></li>
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-inline shop-top-menu pb-3 pt-1">
+                            <li class="list-inline-item">
+                                <a class="h3 text-dark text-decoration-none mr-3" href="#">MonitorSmart</a>
+                            </li>
                         </ul>
                     </div>
+                    <div class="col-md-6 pb-4">
+                    </div>
                 </div>
-                <div class="card-body">
-                    <a href="#" class="h3 text-decoration-none">{{ $product->nama_produk }}</a>
-                    <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                        <li>{{ $product->category->nama_kategori ?? 'Uncategorized' }}</li>
-                    </ul>
-                    <p></p>
-                    <p class="text-center mb-0"><strong>Rp.{{ number_format($product->harga, 2, ',', '.') }}</strong></p>
+                <div class="row">
+                    @foreach ($products as $product)
+                        <div class="col-md-4">
+                            <div class="card mb-4 product-wap rounded-0">
+                                <div class="card rounded-0">
+                                    <img class="card-img rounded-0 img-fluid" src="{{ asset('storage/' . $product->foto) }}" alt="{{ $product->nama_produk }}">
+                                    <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                                        <ul class="list-unstyled">
+                                            <li><a class="btn btn-success text-white" href="#"><i class="far fa-heart"></i></a></li>
+                                            <li><a class="btn btn-success text-white mt-2" href="#"><i class="far fa-eye"></i></a></li>
+                                            <li><a class="btn btn-success text-white mt-2" href="{{ route('cart.add', $product->id_produk) }}"><i class="fas fa-cart-plus"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <a href="#" class="h3 text-decoration-none">{{ $product->nama_produk }}</a>
+                                    <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
+                                        <li>{{ $product->category->nama_kategori ?? 'Uncategorized' }}</li>
+                                    </ul>
+                                    <p></p>
+                                    <p class="text-center mb-0"><strong>Rp.{{ number_format($product->harga, 2, ',', '.') }}</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <div div="row">
+                    
                 </div>
             </div>
-        </div>
-    @endforeach
-</div>
-<div div="row">
 
         </div>
-    </section>
-    <!-- End Featured Product -->
+    </div>
+    <!-- End Content -->
+
+   
 
 
     <!-- Start Footer -->
@@ -415,7 +487,10 @@ https://templatemo.com/tm-559-zay-shop
             <div class="container">
                 <div class="row pt-2">
                     <div class="col-12">
-                       
+                        <p class="text-left text-light">
+                            Copyright &copy; 2021 Company Name 
+                            | Designed by <a rel="sponsored" href="https://templatemo.com" target="_blank">TemplateMo</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -424,14 +499,51 @@ https://templatemo.com/tm-559-zay-shop
     </footer>
     <!-- End Footer -->
 
+
     <!-- Start Script -->
     <script src="assets/home/js/jquery-1.11.0.min.js"></script>
     <script src="assets/home/js/jquery-migrate-1.2.1.min.js"></script>
     <script src="assets/home/js/bootstrap.bundle.min.js"></script>
     <script src="assets/home/js/templatemo.js"></script>
     <script src="assets/home/js/custom.js"></script>
-    <!-- End Script -->
+    <script>
+        // Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
 
-   
+// Add 'animated' class to elements on page load
+window.addEventListener('load', () => {
+    document.querySelectorAll('.card, .templatemo-accordion a').forEach(el => {
+        el.classList.add('animated');
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    var categoryMenuLinks = document.querySelectorAll(".templatemo-accordion a");
+    categoryMenuLinks.forEach(function(link) {
+        link.addEventListener("click", function() {
+            var collapseElement = link.nextElementSibling;
+            if (collapseElement && collapseElement.classList.contains("collapse")) {
+                collapseElement.classList.toggle("show");
+                // Toggle icon rotation
+                var icon = link.querySelector(".fa-chevron-circle-down");
+                if (icon) {
+                    icon.classList.toggle("fa-rotate-180");
+                }
+            }
+        });
+    });
+});
+
+
+    </script>
+    <!-- End Script -->
+</body>
 
 </html>

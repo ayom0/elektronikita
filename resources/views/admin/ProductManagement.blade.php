@@ -7,7 +7,23 @@
     <link rel="stylesheet" href="assets/admin/assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Your existing CSS for sidebar, main content, table, and modal here */
+        .product-description {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            max-width: 200px; /* Anda bisa menyesuaikan lebar ini */
+            display: inline-block;
+        }
+
+        .read-more {
+            color: #306EE8;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .full-description {
+            display: none; /* Sembunyikan deskripsi lengkap secara default */
+        }
     </style>
 </head>
 <body>
@@ -16,12 +32,21 @@
             <h2>Admin Panel</h2>
         </div>
         <ul>
-            <li><a href="#user-management">User Management</a></li>
-            <li><a href="#payments">Payments</a></li>
-            <li><a href="#kategori">Kategori</a></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="#shipping">Shipping</a></li>
-            <li><a href="#landing-pages">Landing Pages</a></li>
+            <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url('/usermanagement') }}">Usermanagement</a></li>
+            <li><a href="{{ url('/products') }}">ProductManagement</a></li>
+            <li><a href="{{ url('/categories') }}">CategoryManagement</a></li>
+            <li><a href="{{ url('/komentars') }}">komentarManagement</a></li>
+            <li><a href="{{ url('/orders') }}">TransaksiManagement</a></li>
+            <li><a href="{{ url('/contacts') }}">contactManagement</a></li>
+            <li><a href="{{ url('/PesananManagement') }}">PesananManagement</a></li>
+            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            Logout
+        </a></li>
+    </ul>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
         </ul>
     </div>
 
@@ -44,39 +69,48 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($products as $product)
-        <tr>
-            <td>{{ $product->id_produk }}</td>
-            <td>{{ $product->nama_produk }}</td>
-            <td>
-                @if ($product->foto)
-                    <img src="{{ asset('storage/' . $product->foto) }}" alt="{{ $product->nama_produk }}" style="width: 100px; height: auto;">
-                @else
-                    No Image
-                @endif
-            </td>
-            <td>{{ $product->deskripsi }}</td>
-            <td>{{ number_format($product->harga, 2, ',', '.') }}</td>
-            <td>{{ $product->category->kategori }}</td>
-            <td class="actions">
-                <button class="edit" 
-                        data-id="{{ $product->id_produk }}" 
-                        data-nama="{{ $product->nama_produk }}" 
-                        data-deskripsi="{{ $product->deskripsi }}" 
-                        data-harga="{{ $product->harga }}" 
-                        data-id-kategori="{{ $product->id_kategori }}" 
-                        data-foto="{{ $product->foto }}">
-                    <i class="fas fa-pencil-alt"></i>
-                </button>
-                <form action="{{ route('products.destroy', $product->id_produk) }}" method="POST" style="display:inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button class="delete"><i class="fas fa-trash-alt"></i></button>
-                </form>
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
+    @foreach ($products as $product)
+    <tr>
+        <td>{{ $product->id_produk }}</td>
+        <td>{{ $product->nama_produk }}</td>
+        <td>
+            @if ($product->foto)
+                <img src="{{ asset('storage/' . $product->foto) }}" alt="{{ $product->nama_produk }}" style="width: 100px; height: auto;">
+            @else
+                No Image
+            @endif
+        </td>
+        <td>
+            @php
+                $deskripsiSingkat = Str::limit($product->deskripsi, 100);
+            @endphp
+            <span class="product-description">{{ $deskripsiSingkat }}</span>
+            @if (strlen($product->deskripsi) > 100)
+                <span class="full-description">{{ $product->deskripsi }}</span>
+                <span class="read-more">Read More</span>
+            @endif
+        </td>
+        <td>{{ number_format($product->harga, 2, ',', '.') }}</td>
+        <td>{{ $product->category->kategori }}</td>
+        <td class="actions">
+            <button class="edit" 
+                    data-id="{{ $product->id_produk }}" 
+                    data-nama="{{ $product->nama_produk }}" 
+                    data-deskripsi="{{ $product->deskripsi }}" 
+                    data-harga="{{ $product->harga }}" 
+                    data-id-kategori="{{ $product->id_kategori }}" 
+                    data-foto="{{ $product->foto }}">
+                <i class="fas fa-pencil-alt"></i>
+            </button>
+            <form action="{{ route('products.destroy', $product->id_produk) }}" method="POST" style="display:inline;">
+                @csrf
+                @method('DELETE')
+                <button class="delete"><i class="fas fa-trash-alt"></i></button>
+            </form>
+        </td>
+    </tr>
+    @endforeach
+</tbody>
 </table>
 
         </div>
@@ -206,6 +240,26 @@
             mainContent.classList.toggle('collapsed');
             this.classList.toggle('collapsed');
         });
+
+         // Script untuk menampilkan dan menyembunyikan deskripsi lengkap
+    document.querySelectorAll('.read-more').forEach(function(button) {
+        button.addEventListener('click', function() {
+            var fullDescription = this.previousElementSibling; // Dapatkan elemen dengan class 'full-description'
+            var shortDescription = this.previousElementSibling.previousElementSibling; // Elemen dengan class 'product-description'
+            
+            if (fullDescription.style.display === 'none' || fullDescription.style.display === '') {
+                // Tampilkan deskripsi lengkap
+                fullDescription.style.display = 'inline';
+                shortDescription.style.display = 'none';
+                this.textContent = 'Read Less';
+            } else {
+                // Kembali ke deskripsi singkat
+                fullDescription.style.display = 'none';
+                shortDescription.style.display = 'inline';
+                this.textContent = 'Read More';
+            }
+        });
+    });
     </script>
 </body>
 </html>

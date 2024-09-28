@@ -298,8 +298,8 @@ footer a:hover {
 
 
 
-    <!-- Start Content -->
-    <div class="container py-5">
+ <!-- Start Content -->
+ <div class="container py-5">
         <div class="row">
 
         <div class="col-lg-3">
@@ -318,13 +318,12 @@ footer a:hover {
             </li>
             <li class="pb-3">
                 <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                    TV
+                    Monitor
                     <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                 </a>
                 <ul id="collapseTwo" class="collapse list-unstyled pl-3">
-                    <li><a class="text-decoration-none" href="#">Samsung</a></li>
-                    <li><a class="text-decoration-none" href="#">LG</a></li>
-                    <li><a class="text-decoration-none" href="#">Toshiba</a></li>
+                    <li><a class="text-decoration-none" href="{{ url('/shopMonitorGaming') }}">Gaming</a></li>
+                    <li><a class="text-decoration-none" href="{{ url('/shopMonitorSmart') }}">Smart</a></li>
                 </ul>
             </li>
             <li class="pb-3">
@@ -333,29 +332,24 @@ footer a:hover {
                     <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                 </a>
                 <ul id="collapseThree" class="collapse list-unstyled pl-3">
-                    <li><a class="text-decoration-none" href="#">Laptop</a></li>
-                    <li><a class="text-decoration-none" href="#">Handphone</a></li>
+                    <li><a class="text-decoration-none" href="#">Headphone</a></li>
+                    <li><a class="text-decoration-none" href="#">Mouse</a></li>
+                    <li><a class="text-decoration-none" href="#">Keyboard</a></li>
+                    <li><a class="text-decoration-none" href="#">Meja/Kursi</a></li>
                 </ul>
             </li>
             <li class="pb-3">
                 <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                    PC Rakitan
+                    Komponen PC
                     <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
                 </a>
                 <ul id="collapseFour" class="collapse list-unstyled pl-3">
-                    <li><a class="text-decoration-none" href="#">Gaming</a></li>
-                    <li><a class="text-decoration-none" href="#">Kantor</a></li>
-                </ul>
-            </li>
-            <li class="pb-3">
-                <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="#">
-                    Handphone
-                    <i class="pull-right fa fa-fw fa-chevron-circle-down mt-1"></i>
-                </a>
-                <ul id="collapseFive" class="collapse list-unstyled pl-3">
-                    <li><a class="text-decoration-none" href="#">Samsung</a></li>
-                    <li><a class="text-decoration-none" href="#">Vivo</a></li>
-                    <li><a class="text-decoration-none" href="#">Iphone</a></li>
+                    <li><a class="text-decoration-none" href="{{ url('/shopVGA') }}">VGA</a></li>
+                    <li><a class="text-decoration-none" href="{{ url('/shopCPU') }}">CPU</a></li>
+                    <li><a class="text-decoration-none" href="{{ url('/shopCasing') }}">Casing</a></li>
+                    <li><a class="text-decoration-none" href="{{ url('/shopPSU') }}">PSU</a></li>
+                    <li><a class="text-decoration-none" href="{{ url('/shopRAM') }}">Ram/Rom</a></li>
+                    <li><a class="text-decoration-none" href="{{ url('/shopCooler') }}">Cooler</a></li>
                 </ul>
             </li>
         </ul>
@@ -384,7 +378,7 @@ footer a:hover {
                                         <ul class="list-unstyled">
                                             <li><a class="btn btn-success text-white" href="#"><i class="far fa-heart"></i></a></li>
                                             <li><a class="btn btn-success text-white mt-2" href="#"><i class="far fa-eye"></i></a></li>
-                                            <li><a class="btn btn-success text-white mt-2" href="#"><i class="fas fa-cart-plus"></i></a></li>
+                                            <li><a class="btn btn-success text-white mt-2" href="{{ route('cart.add', $product->id_produk) }}"><i class="fas fa-cart-plus"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -393,7 +387,8 @@ footer a:hover {
                                     <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
                                         <li>{{ $product->category->nama_kategori ?? 'Uncategorized' }}</li>
                                     </ul>
-                                    <p class="text-center mb-0">Rp.{{ number_format($product->harga, 2, ',', '.') }}</p>
+                                    <p></p>
+                                    <p class="text-center mb-0"><strong>Rp.{{ number_format($product->harga, 2, ',', '.') }}</strong></p>
                                 </div>
                             </div>
                         </div>
