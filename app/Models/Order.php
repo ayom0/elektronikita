@@ -20,5 +20,13 @@ public $incrementing = false;
         'snap_token','order_id'
     ];
 
-    // You can add relationships and other model methods here as needed
+    public function transaksi()
+{
+    return $this->hasMany(Transaksi::class, 'order_id', 'order_id');
+}
+
+public function product()
+{
+    return $this->belongsTo(Product::class, 'id_produk', 'id_produk');
+}
 }

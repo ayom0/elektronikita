@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->decimal('shipping_cost', 15, 2);
             $table->decimal('total', 15, 2);
             $table->enum('payment_status', ['pending',  'success', 'failed']);
+            $table->enum('status', ['pending', 'dikirim', 'selesai', 'batal'])->default('pending');
             $table->string('snap_token')->nullable(); // Add this line
             $table->timestamps();
         });

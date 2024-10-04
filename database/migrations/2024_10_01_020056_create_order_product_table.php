@@ -9,12 +9,15 @@ class CreateOrderProductTable extends Migration
     public function up()
     {
         Schema::create('order_product', function (Blueprint $table) {
-            $table->id(); // Optional, primary key for the pivot table
+            $table->id();
             $table->foreignId('order_id')->constrained()->onDelete('cascade');
-            $table->foreignId('product_id')->constrained('products', 'id_produk')->onDelete('cascade'); // Reference to 'id_produk'
-            $table->integer('quantity'); // Store the quantity of the product
+            $table->foreignId('product_id')->constrained('products', 'id_produk')->onDelete('cascade'); // Menghubungkan ke 'id_produk'
+            $table->integer('quantity');
+            $table->decimal('price', 10, 2);
             $table->timestamps();
         });
+        
+        
     }
 
     public function down()

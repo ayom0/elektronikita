@@ -37,87 +37,109 @@ class CheckoutController extends Controller
     }
 
     public function processCheckout(Request $request)
-    {
-        // Check if user is logged in
-        if (!Auth::check()) {
-            return redirect()->route('login');
-        }
+{
+    // Check if user is logged in
+    if (!Auth::check()) {
+        return redirect()->route('login');
+    }
 
-        // Validate input
-        $request->validate([
-            'recipient_name' => 'required',
-            'email' => 'required|email',
-            'address' => 'required',
-        ]);
+    // Validate input
+    $request->validate([
+        'recipient_name' => 'required',
+        'email' => 'required|email',
+        'address' => 'required',
+    ]);
 
-        // Calculate subtotal and shipping cost
-        $subtotal = 0;
-        $cart = session()->get('cart', []);
-        foreach ($cart as $item) {
-            $subtotal += $item['harga'] * $item['jumlah'];
-        }
-        $ongkir = 10000;
-        $total = $subtotal + $ongkir;
+    // Calculate subtotal and shipping cost
+    $subtotal = 0;
+    $cart = session()->get('cart', []); // Get cart from session
+    foreach ($cart as $item) {
+        $subtotal += $item['harga'] * $item['jumlah'];
+    }
+    $ongkir = 10000;
+    $total = $subtotal + $ongkir;
 
-        // Create a new order
-        $order = Order::create([
-            'order_id' => (string) Str::uuid(),
+    // Create a new order
+    $order = Order::create([
+        'order_id' => (string) Str::uuid(),
+        'user_id' => Auth::id(),
+        'recipient_name' => $request->input('recipient_name'),
+        'email' => $request->input('email'),
+        'address' => $request->input('address'),
+        'message' => $request->input('message'),
+        'subtotal' => $subtotal,
+        'shipping_cost' => $ongkir,
+        'total' => $total,
+        'payment_status' => 'pending',
+    ]);
+
+    // Configure Midtrans
+    Config::$serverKey = env('MIDTRANS_SERVER_KEY');
+    Config::$isProduction = false;
+    Config::$isSanitized = true;
+    Config::$is3ds = true;
+
+    // Create transaction details
+    $transaction_details = [
+        'order_id' => $order->order_id,
+        'gross_amount' => $order->total,
+    ];
+
+    // Prepare item details for Midtrans
+    $item_details = [];
+    foreach ($cart as $item) {
+        $item_details[] = [
+            'id' => $item['id_produk'],
+            'price' => $item['harga'],
+            'quantity' => $item['jumlah'], // Tambahkan jumlah barang
+            'name' => $item['nama_produk'],
+        ];
+    }
+
+    // Customer details
+    $customer_details = [
+        'first_name' => $order->recipient_name,
+        'email' => $order->email,
+        'address' => $order->address,
+    ];
+
+    // Build the Midtrans payload
+    $params = [
+        'transaction_details' => $transaction_details,
+        'item_details' => $item_details,
+        'customer_details' => $customer_details,
+    ];
+
+    // Generate Snap token
+    $snapToken = Snap::getSnapToken($params);
+    $order->snap_token = $snapToken;
+    $order->save();
+
+    // Simpan setiap item dalam keranjang ke tabel transaksi
+    foreach ($cart as $item) {
+        \DB::table('transaksi')->insert([
             'user_id' => Auth::id(),
+            'id_produk' => $item['id_produk'],
             'recipient_name' => $request->input('recipient_name'),
             'email' => $request->input('email'),
-            'address' => $request->input('address'),
             'message' => $request->input('message'),
-            'subtotal' => $subtotal,
+            'subtotal' => $item['harga'] * $item['jumlah'],
             'shipping_cost' => $ongkir,
-            'total' => $total,
+            'total' => ($item['harga'] * $item['jumlah']) + $ongkir,
+            'quantity' => $item['jumlah'], // Simpan jumlah barang yang dibeli
             'payment_status' => 'pending',
+            'snap_token' => $snapToken, // Gunakan snap token yang sudah didefinisikan
+            'created_at' => now(),
+            'updated_at' => now(),
         ]);
-
-        // Configure Midtrans
-        Config::$serverKey = env('MIDTRANS_SERVER_KEY');
-        Config::$isProduction = false;
-        Config::$isSanitized = true;
-        Config::$is3ds = true;
-
-        // Create transaction details
-        $transaction_details = [
-            'order_id' => $order->order_id,
-            'gross_amount' => $order->total,
-        ];
-
-        // Prepare item details for Midtrans
-        $item_details = [];
-        foreach ($cart as $item) {
-            $item_details[] = [
-                'id' => $item['id_produk'],
-                'price' => $item['harga'],
-                'quantity' => $item['jumlah'],
-                'name' => $item['nama_produk'],
-            ];
-        }
-
-        // Customer details
-        $customer_details = [
-            'first_name' => $order->recipient_name,
-            'email' => $order->email,
-            'address' => $order->address,
-        ];
-
-        // Build the Midtrans payload
-        $params = [
-            'transaction_details' => $transaction_details,
-            'item_details' => $item_details,
-            'customer_details' => $customer_details,
-        ];
-
-        // Generate Snap token
-        $snapToken = Snap::getSnapToken($params);
-        $order->snap_token = $snapToken;
-        $order->save();
-
-        // Redirect to payment page with Snap token
-        return view('payment', ['snapToken' => $snapToken, 'order' => $order]);
     }
+
+    // Redirect to payment page with Snap token
+    return view('payment', ['snapToken' => $snapToken, 'order' => $order]);
+}
+
+
+    
 
     public function checkout($orderId)
     {
@@ -139,6 +161,7 @@ class CheckoutController extends Controller
     // Ubah status pembayaran menjadi success
     $order->payment_status = 'success';
     $order->save();
+    
 
     // Tampilkan halaman payment-success
     return view('payment-success', compact('order'));

@@ -190,14 +190,27 @@ use App\Http\Controllers\ShopCollerController;
 Route::get('/shopCooler', [ShopCollerController::class, 'index'])->name('shopSamsungMonitor.index');
 
 
+//rute pesanan
+use App\Http\Controllers\PesananController;
+
+Route::get('/pesanan', [PesananController::class, 'index'])->middleware('auth');
+
+use App\Http\Controllers\PesananManagementController;
+
+Route::resource('PesananManagement', PesananManagementController::class);
+
+
+
+
+
+
+
 //Rute dashboard admin
 use App\Http\Controllers\AdminDashboardController;
 
 Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
-Route::get('/PesananManagement', function () {
-    return view('admin.PesananManagement');
-});
+
 
 
 Route::get('/landingpage', function () {
@@ -208,9 +221,6 @@ Route::get('/profil', function () {
     return view('users.profile');
 });
 
-Route::get('/pesanan', function () {
-    return view('users.pesanan');
-});
 
 
 

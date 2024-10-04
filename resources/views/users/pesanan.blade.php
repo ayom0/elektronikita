@@ -225,32 +225,30 @@
     <div class="order-container">
     <h2 class="order-title">Pesanan Saya</h2>
 
-    <div class="order-card">
-        <div class="order-details">
-            <img src="{{ asset('assets/home/img/rogstrix1.jpg') }}" alt="Gambar Produk" class="order-image">
-            <div class="order-info">
-                <h3 class="product-name">Nama Barang 1</h3>
-                <p class="product-price">Harga: Rp 150,000</p>
-                <p class="product-quantity">Jumlah: 2</p>
-                <p class="product-subtotal">Sub Total: Rp 300,000</p>
-            </div>
+    @foreach($pesanan as $order)
+<div class="order-card">
+    <div class="order-details">
+        <img src="{{ asset('storage/' . $order->product->foto) }}" alt="Gambar Produk" class="order-image">
+        
+        <div class="order-info">
+            <h3 class="product-name">{{ $order->product->nama_produk }}</h3>
+            <p class="product-price">Harga: Rp {{ number_format($order->product->harga, 0, ',', '.') }}</p>
+            <!-- Perbaiki bagian ini -->
+            <p class="product-quantity">Jumlah: {{ $order->quantity }}</p>
+            <p class="product-subtotal">Sub Total: Rp {{ number_format($order->subtotal, 0, ',', '.') }}</p>
         </div>
-        <div class="order-status dikirim">Dikirim</div>
-        </div>
+    </div>
+    <div class="order-status {{ strtolower($order->status) }}">
+    {{ ucfirst($order->status) }}
+</div>
+
+</div>
+@endforeach
 
 
-        <div class="order-card">
-        <div class="order-details">
-            <img src="{{ asset('assets/home/img/rog.jpg') }}" alt="Gambar Produk" class="order-image">
-            <div class="order-info">
-                <h3 class="product-name">Nama Barang 1</h3>
-                <p class="product-price">Harga: Rp 150,000</p>
-                <p class="product-quantity">Jumlah: 2</p>
-                <p class="product-subtotal">Sub Total: Rp 300,000</p>
-            </div>
-        </div>
-        <div class="order-status diproses">Diproses</div>
-        </div>
+
+
+        
 
 
     <button class="btn-profile" onclick="kembaliKeProfil()">Kembali ke Profil</button>
