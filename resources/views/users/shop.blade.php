@@ -381,7 +381,7 @@ footer a:hover {
                     <img class="card-img rounded-0 img-fluid" src="{{ asset('storage/' . $product->foto) }}" alt="{{ $product->nama_produk }}">
                     <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                         <ul class="list-unstyled">
-                            <li><a class="btn btn-success text-white" href="#"><i class="far fa-heart"></i></a></li>
+                           
                             <li>
     <a class="btn btn-success text-white mt-2" href="{{ route('product.details', ['id_produk' => $product->id_produk]) }}">
         <i class="far fa-eye"></i>
