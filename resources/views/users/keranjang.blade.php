@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ElektronikKita</title>
+    <title>Elektronikita</title>
     
     <link rel="shortcut icon" type="image/x-icon" href="image/logo.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -56,7 +56,7 @@
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">ElektronikKita@gmail.com</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">Elektronikita@gmail.com</a>
                     <i class="fa fa-phone mx-2"></i>
                     <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">0897237</a>
                 </div>
@@ -180,7 +180,7 @@
                 </tr>
             </table>
             <a href="/checkout" class="normal">
-    <button class="normal">Proceed to checkout</button>
+    <button class="normal">Proses ke checkout</button>
 </a>
 
         </div>
@@ -193,7 +193,7 @@
             <div class="row">
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">ElektronikKita</h2>
+                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">Elektronikita</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fa fa-phone fa-fw"></i>

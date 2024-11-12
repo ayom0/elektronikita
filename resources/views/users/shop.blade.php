@@ -229,7 +229,7 @@ footer a:hover {
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">ElektronikKita@gmail.com</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">Elektronikita@gmail.com</a>
                     <i class="fa fa-phone mx-2"></i>
                     <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">089231372</a>
                 </div>
@@ -381,26 +381,38 @@ footer a:hover {
                     <img class="card-img rounded-0 img-fluid" src="{{ asset('storage/' . $product->foto) }}" alt="{{ $product->nama_produk }}">
                     <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                         <ul class="list-unstyled">
-                           
                             <li>
-    <a class="btn btn-success text-white mt-2" href="{{ route('product.details', ['id_produk' => $product->id_produk]) }}">
-        <i class="far fa-eye"></i>
-    </a>
-</li>
-                            <li><a class="btn btn-success text-white mt-2" href="{{ route('cart.add', $product->id_produk) }}"><i class="fas fa-cart-plus"></i></a></li>
+                                <a class="btn btn-success text-white mt-2" href="{{ route('product.details', ['id_produk' => $product->id_produk]) }}">
+                                    <i class="far fa-eye"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="btn btn-success text-white mt-2" href="{{ route('cart.add', $product->id_produk) }}">
+                                    <i class="fas fa-cart-plus"></i>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
                 <div class="card-body">
                     <a href="#" class="h3 text-decoration-none">{{ $product->nama_produk }}</a>
                     <ul class="w-100 list-unstyled d-flex justify-content-between mb-0">
-                        <!-- Static Star Rating Display -->
+                        <!-- Dynamic Star Rating Display -->
                         <li>
-                            <i class="fas fa-star" style="color: gold;"></i>
-                            <i class="fas fa-star" style="color: gold;"></i>
-                            <i class="fas fa-star" style="color: gold;"></i>
-                            <i class="fas fa-star" style="color: gold;"></i>
-                            <i class="fas fa-star-half-alt" style="color: gold;"></i> <!-- Half star for a visual effect -->
+                            @php
+                                $starCount = round($product->average_rating); // Bulatkan rata-rata rating
+                                $hasHalfStar = $product->average_rating - $starCount >= 0.5; // Cek apakah ada setengah bintang
+                            @endphp
+
+                            @for ($i = 1; $i <= 5; $i++)
+                                @if ($i <= $starCount)
+                                    <i class="fas fa-star" style="color: gold;"></i> <!-- Full star -->
+                                @elseif ($i === $starCount + 1 && $hasHalfStar)
+                                    <i class="fas fa-star-half-alt" style="color: gold;"></i> <!-- Half star -->
+                                @else
+                                    <i class="fas fa-star" style="color: lightgray;"></i> <!-- Empty star -->
+                                @endif
+                            @endfor
                         </li>
                     </ul>
                     <p></p>
@@ -410,6 +422,7 @@ footer a:hover {
         </div>
     @endforeach
 </div>
+
 
                     
                 </div>

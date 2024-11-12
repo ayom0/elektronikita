@@ -8,6 +8,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* Your existing CSS for sidebar, main content, table, and modal here */
+
+        .filter-form {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+.filter-form input,
+.filter-form select{
+    padding: 5px;
+    
+}
+
+.filter-form button {
+    padding: 5px;
+    background-color: #4CAF50;
+    
+}
+
         .modal {
             display: none;
             position: fixed;
@@ -47,13 +65,14 @@
         </div>
         <ul>
             <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-            <li><a href="{{ url('/usermanagement') }}">Usermanagement</a></li>
-            <li><a href="{{ url('/products') }}">ProductManagement</a></li>
-            <li><a href="{{ url('/categories') }}">CategoryManagement</a></li>
-            <li><a href="{{ url('/komentars') }}">komentarManagement</a></li>
-            <li><a href="{{ url('/orders') }}">TransaksiManagement</a></li>
-            <li><a href="{{ url('/contacts') }}">contactManagement</a></li>
-            <li><a href="{{ url('/PesananManagement') }}">PesananManagement</a></li><li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <li><a href="{{ url('/usermanagement') }}">User</a></li>
+            <li><a href="{{ url('/products') }}">Product</a></li>
+            <li><a href="{{ url('/categories') }}">Category</a></li>
+            <li><a href="{{ url('/komentars') }}">komentar</a></li>
+            <li><a href="{{ url('/orders') }}">Transaksi</a></li>
+            <li><a href="{{ url('/contacts') }}">contact</a></li>
+            <li><a href="{{ url('/PesananManagement') }}">Pesanan</a></li>
+            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             Logout
         </a></li>
     </ul>
@@ -68,6 +87,23 @@
         <div id="contact-management" class="content-section">
             <h2>Contact Management</h2>
             <button id="addContactBtn">Add New Contact</button>
+            <!-- Form Filter -->
+<div class="filter-form">
+<div class="filter-form">
+    <form method="GET" action="{{ url('/contacts') }}" class="filter-form">
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama" value="{{ request()->nama }}">
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{ request()->email }}">
+        
+        <button type="submit">Apply</button>
+        <a href="{{ url('/contacts') }}">Reset</a>
+    </form>
+</div>
+
+    
+</div>
             <table>
                 <thead>
                     <tr>

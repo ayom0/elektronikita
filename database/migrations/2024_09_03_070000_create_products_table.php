@@ -11,7 +11,8 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id('id_produk'); // Primary key with 'id_produk'
             $table->string('nama_produk'); // Product name
-            $table->string('foto'); // Product photo
+            $table->string('foto'); // Main product photo
+            $table->json('foto_lainnya')->nullable(); // Additional photos stored as JSON
             $table->text('deskripsi'); // Product description
             $table->decimal('harga', 10, 2); // Product price
             $table->foreignId('id_kategori')->constrained('categories', 'id_kategori')->onDelete('cascade'); // Foreign key to 'categories'

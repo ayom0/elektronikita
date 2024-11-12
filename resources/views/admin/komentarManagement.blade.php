@@ -7,6 +7,23 @@
     <link rel="stylesheet" href="assets/admin/assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome -->
     <style>
+
+.filter-form {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+.filter-form input,
+.filter-form select{
+    padding: 5px;
+    
+}
+
+.filter-form button {
+    padding: 5px;
+    background-color: #4CAF50;
+    
+}
         /* Your existing CSS for sidebar, main content, table, and modal here */
         .modal {
             display: none;
@@ -47,13 +64,13 @@
         </div>
         <ul>
             <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-            <li><a href="{{ url('/usermanagement') }}">Usermanagement</a></li>
-            <li><a href="{{ url('/products') }}">ProductManagement</a></li>
-            <li><a href="{{ url('/categories') }}">CategoryManagement</a></li>
-            <li><a href="{{ url('/komentars') }}">komentarManagement</a></li>
-            <li><a href="{{ url('/orders') }}">TransaksiManagement</a></li>
-            <li><a href="{{ url('/contacts') }}">contactManagement</a></li>
-            <li><a href="{{ url('/PesananManagement') }}">PesananManagement</a></li>
+            <li><a href="{{ url('/usermanagement') }}">User</a></li>
+            <li><a href="{{ url('/products') }}">Product</a></li>
+            <li><a href="{{ url('/categories') }}">Category</a></li>
+            <li><a href="{{ url('/komentars') }}">komentar</a></li>
+            <li><a href="{{ url('/orders') }}">Transaksi</a></li>
+            <li><a href="{{ url('/contacts') }}">contact</a></li>
+            <li><a href="{{ url('/PesananManagement') }}">Pesanan</a></li>
             <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             Logout
         </a></li>
@@ -69,42 +86,56 @@
         <div id="komentar-management" class="content-section">
             <h2>Komentar Management</h2>
             <button id="addKomentarBtn">Add New Komentar</button>
+             <!-- Form Filter -->
+    <form method="GET" action="{{ route('komentars.index') }}"  class="filter-form">
+        <input type="text" name="nama" placeholder="Nama" value="{{ request('nama') }}">
+        <input type="number" name="id_user" placeholder="ID User" value="{{ request('id_user') }}">
+        <input type="number" name="rating" placeholder="Rating" value="{{ request('rating') }}">
+        <input type="number" name="id_produk" placeholder="ID Produk" value="{{ request('id_produk') }}">
+        <button type="submit">Apply</button>
+        <a href="{{ route('komentars.index') }}">Reset</a>
+    </form>
+    
             <table>
-                <thead>
-                    <tr>
-                        <th>Nama</th>
-                        <th>Isi Komentar</th>
-                        <th>Produk</th>
-                        <th>User</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($komentars as $komentar)
-                    <tr>
-                        <td>{{ $komentar->nama }}</td>
-                        <td>{{ $komentar->isi_komentar }}</td>
-                        <td>{{ $komentar->id_produk }}</td> <!-- Assuming you want to show product ID, you can modify this -->
-                        <td>{{ $komentar->id_user }}</td> <!-- Assuming you want to show user ID, you can modify this -->
-                        <td class="actions">
-                            <button class="edit" 
-                                    data-id="{{ $komentar->id_komentar }}" 
-                                    data-nama="{{ $komentar->nama }}" 
-                                    data-isi="{{ $komentar->isi_komentar }}" 
-                                    data-produk="{{ $komentar->id_produk }}" 
-                                    data-user="{{ $komentar->id_user }}">
-                                <i class="fas fa-pencil-alt"></i>
-                            </button>
-                            <form action="{{ route('komentars.destroy', $komentar->id_komentar) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button class="delete"><i class="fas fa-trash-alt"></i></button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+    <thead>
+        <tr>
+            <th>Nama</th>
+            <th>Isi Komentar</th>
+            <th>Produk</th>
+            <th>User</th>
+            <th>Rating</th> <!-- Tambahkan kolom rating -->
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($komentars as $komentar)
+        <tr>
+            <td>{{ $komentar->nama }}</td>
+            <td>{{ $komentar->isi_komentar }}</td>
+            <td>{{ $komentar->id_produk }}</td> <!-- Produk ID -->
+            <td>{{ $komentar->id_user }}</td> <!-- User ID -->
+            <td>{{ $komentar->rating }}</td> <!-- Tampilkan rating -->
+            <td class="actions">
+                <button class="edit" 
+                        data-id="{{ $komentar->id_komentar }}" 
+                        data-nama="{{ $komentar->nama }}" 
+                        data-isi="{{ $komentar->isi_komentar }}" 
+                        data-produk="{{ $komentar->id_produk }}" 
+                        data-user="{{ $komentar->id_user }}"
+                        data-rating="{{ $komentar->rating }}"> <!-- Tambahkan data-rating -->
+                    <i class="fas fa-pencil-alt"></i>
+                </button>
+                <form action="{{ route('komentars.destroy', $komentar->id_komentar) }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button class="delete"><i class="fas fa-trash-alt"></i></button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
+
         </div>
     </div>
 
@@ -130,6 +161,11 @@
                     <label for="add-user">ID User:</label>
                     <input type="number" id="add-user" name="id_user" required>
                 </div>
+                <div class="form-group">
+    <label for="add-rating">Rating:</label>
+    <input type="number" id="add-rating" name="rating" min="1" max="5" required>
+</div>
+
                 <button type="submit">Add Komentar</button>
             </form>
         </div>
@@ -158,6 +194,11 @@
                     <label for="edit-user">ID User:</label>
                     <input type="number" id="edit-user" name="id_user" required>
                 </div>
+                <div class="form-group">
+    <label for="edit-rating">Rating:</label>
+    <input type="number" id="edit-rating" name="rating" min="1" max="5" required>
+</div>
+
                 <input type="hidden" id="edit-komentar-id" name="komentar_id">
                 <button type="submit">Edit Komentar</button>
             </form>
@@ -179,11 +220,13 @@
                 var komentarIsi = this.getAttribute('data-isi');
                 var komentarProduk = this.getAttribute('data-produk');
                 var komentarUser = this.getAttribute('data-user');
+                var komentarRating = this.getAttribute('data-rating');
 
                 document.getElementById('edit-nama').value = komentarNama;
                 document.getElementById('edit-isi').value = komentarIsi;
                 document.getElementById('edit-produk').value = komentarProduk;
                 document.getElementById('edit-user').value = komentarUser;
+                document.getElementById('edit-rating').value = komentarRating;
                 document.getElementById('edit-komentar-id').value = komentarId;
 
                 document.getElementById('editKomentarForm').action = "{{ url('komentars') }}/" + komentarId;

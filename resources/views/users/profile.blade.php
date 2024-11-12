@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Profil</title>
     <style>
-       body {
+        body {
             font-family: 'Poppins', sans-serif;
             background-color: #f8fafc;
             margin: 0;
@@ -21,6 +21,27 @@
             background-color: #fff;
             box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .logo-container {
+            display: inline-block;
+        }
+        .logo-img {
+            width: 100px;
+            height: auto;
+        }
+        h2 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            flex-grow: 1;
         }
         .form-group {
             margin-bottom: 20px;
@@ -84,9 +105,16 @@
     </style>
 </head>
 <body>
-
+    
 <div class="container">
-    <h2>Profil Pengguna</h2>
+    <!-- Header dengan Logo dan Judul -->
+    <div class="header">
+        <a class="navbar-brand logo-container" href="index.html">
+            <img src="assets/home/img/logo2.png" alt="Logo" class="logo-img">
+        </a>
+        <h2>Profil Pengguna</h2>
+    </div>
+
     @if(session('success'))
         <div class="alert alert-success" style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
             {{ session('success') }}
@@ -131,4 +159,4 @@
 </form>
 
 </body>
-</html>
+</html> 

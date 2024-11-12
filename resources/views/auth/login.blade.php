@@ -29,7 +29,8 @@
     </div>
 
     <div class="form-link">
-        <a href="#" class="forgot-pass">Forgot password?</a>
+    <a href="{{ route('password.request') }}" class="forgot-pass">Forgot password?</a>
+
     </div>
 
     <div class="field button-field">
@@ -47,10 +48,10 @@
 
 
             <div class="media-options">
-                <a href="#" class="field google">
-                <i class='bx bxl-google google-icon'></i>
-                    <span>Login with Google</span>
-                </a>
+            <a href="{{ route('google.login') }}" class="field google">
+    <i class='bx bxl-google google-icon'></i>
+    <span>Register with Google</span>
+</a>
             </div>
         </div>
     </section>

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\Category; // Update to use the new Category model
-use App\Models\Komentar; // Include this for comments
+use App\Models\Category;
+use App\Models\Komentar;
 use Illuminate\Http\Request;
 
 class ProductDetailsController extends Controller
@@ -17,6 +17,10 @@ class ProductDetailsController extends Controller
         
         // Retrieve comments for the product
         $komentars = Komentar::where('id_produk', $id_produk)->with('user')->get();
+
+        // Calculate average rating
+        $averageRating = $komentars->avg('rating');
+        $commentCount = $komentars->count();
 
         // Retrieve category IDs based on the specified categories
         $gamingNotebookCategory = Category::where('kategori', 'GamingNotebook')->first();
@@ -51,7 +55,8 @@ class ProductDetailsController extends Controller
             $products = $products->merge($vgaProducts);
         }
 
-        // Pass the product, comments, and random products data to the view
-        return view('users.beli', compact('product', 'komentars', 'products'));
+        // Pass the product, comments, average rating, and random products data to the view
+        return view('users.beli', compact('product', 'komentars', 'averageRating', 'commentCount', 'products'));
     }
 }
+

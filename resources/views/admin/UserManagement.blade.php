@@ -8,6 +8,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome -->
     <style>
         /* Your existing CSS for sidebar, main content, table, and modal here */
+        /* CSS untuk Form Filter */
+        .filter-form {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+.filter-form input,
+.filter-form select{
+    padding: 5px;
+    
+}
+
+.filter-form button {
+    padding: 5px;
+    background-color: #4CAF50;
+    
+}
+
         .modal {
             display: none;
             position: fixed;
@@ -47,13 +65,13 @@
         </div>
         <ul>
             <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-            <li><a href="{{ url('/usermanagement') }}">Usermanagement</a></li>
-            <li><a href="{{ url('/products') }}">ProductManagement</a></li>
-            <li><a href="{{ url('/categories') }}">CategoryManagement</a></li>
-            <li><a href="{{ url('/komentars') }}">komentarManagement</a></li>
-            <li><a href="{{ url('/orders') }}">TransaksiManagement</a></li>
-            <li><a href="{{ url('/contacts') }}">contactManagement</a></li>
-            <li><a href="{{ url('/PesananManagement') }}">PesananManagement</a></li>
+            <li><a href="{{ url('/usermanagement') }}">User</a></li>
+            <li><a href="{{ url('/products') }}">Product</a></li>
+            <li><a href="{{ url('/categories') }}">Category</a></li>
+            <li><a href="{{ url('/komentars') }}">komentar</a></li>
+            <li><a href="{{ url('/orders') }}">Transaksi</a></li>
+            <li><a href="{{ url('/contacts') }}">contact</a></li>
+            <li><a href="{{ url('/PesananManagement') }}">Pesanan</a></li>
             <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             Logout
         </a></li>
@@ -69,6 +87,20 @@
         <div id="user-management" class="content-section">
             <h2>User Management</h2>
             <button id="addUserBtn">Add New User</button>
+            <!-- Filter and Search Form -->
+    <form action="{{ route('usermanagement.index') }}" method="GET" class="filter-form">
+        <label for="role">Filter by Role:</label>
+        <select name="role" id="role">
+            <option value="">All</option>
+            <option value="user" {{ request('role') == 'user' ? 'selected' : '' }}>User</option>
+            <option value="admin" {{ request('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+        </select>
+
+        <label for="email">Search by Email:</label>
+        <input type="text" name="email" id="email" value="{{ request('email') }}" placeholder="Enter email...">
+
+        <button type="submit">Apply</button>
+    </form>
             <table>
             <thead>
     <tr>
@@ -256,6 +288,18 @@
         mainContent.classList.toggle('collapsed');
         this.classList.toggle('collapsed');
     });
+
+    // Tambahkan fungsi untuk menerapkan filter saat elemen dipilih atau diubah
+document.getElementById('role').addEventListener('change', function () {
+    document.querySelector('form button[type="submit"]').click(); // Apply filter otomatis
+});
+
+document.getElementById('email').addEventListener('keyup', function (e) {
+    if (e.key === 'Enter') {
+        document.querySelector('form button[type="submit"]').click(); // Apply filter saat tekan Enter
+    }
+});
+
     </script>
 </body>
 </html>

@@ -1,6 +1,39 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
+require __DIR__.'/auth.php';
+
+
+use Illuminate\Support\Facades\Password;
+
+Route::get('forgot-password', [\App\Http\Controllers\Auth\PasswordResetLinkController::class, 'create'])
+    ->middleware('guest')
+    ->name('password.request');
+
+Route::post('forgot-password', [\App\Http\Controllers\Auth\PasswordResetLinkController::class, 'store'])
+    ->middleware('guest')
+    ->name('password.email');
+
+Route::get('reset-password/{token}', [\App\Http\Controllers\Auth\NewPasswordController::class, 'create'])
+    ->middleware('guest')
+    ->name('password.reset');
+
+Route::post('reset-password', [\App\Http\Controllers\Auth\NewPasswordController::class, 'store'])
+    ->middleware('guest')
+    ->name('password.update');
+
 
 //Untuk Register dan Login
 use App\Http\Controllers\RegisterController;
@@ -46,6 +79,12 @@ Route::middleware('auth')->group(function () {
         return redirect('/login');
     })->name('logout');
 });
+
+use App\Http\Controllers\Auth\GoogleController;
+
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
 
 use App\Http\Controllers\CheckoutController;
 
@@ -212,33 +251,8 @@ Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admi
 
 
 
-
-Route::get('/landingpage', function () {
-    return view('landing');
-});
-
-Route::get('/profil', function () {
-    return view('users.profile');
-});
-
-
-
-
 Route::get('/about', function () {
     return view('users.about');
 });
-
-
-
-
-
-
-
-
-Route::get('/adminDashboard', function () {
-    return view('admin.userManagement');
-});
-
-
 
 

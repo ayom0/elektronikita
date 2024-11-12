@@ -11,9 +11,11 @@ class CreateKomentarsTable extends Migration
         Schema::create('komentars', function (Blueprint $table) {
             $table->id('id_komentar'); // Primary key with 'id_komentar'
             $table->foreignId('id_user')->constrained('users')->onDelete('cascade'); // Foreign key to 'users'
-            $table->foreignId('id_produk')->constrained('products', 'id_produk')->onDelete('cascade'); // Foreign key to 'products'
+            $table->unsignedBigInteger('id_produk'); // Tentukan kolom id_produk sebagai unsignedBigInteger
+            $table->foreign('id_produk')->references('id_produk')->on('products')->onDelete('cascade');
             $table->string('nama');
             $table->text('isi_komentar'); // Comment content
+            $table->unsignedTinyInteger('rating')->nullable(); // Add rating column, nullable (0-5)
             $table->timestamps(); // Timestamps
         });
     }
@@ -23,4 +25,3 @@ class CreateKomentarsTable extends Migration
         Schema::dropIfExists('komentars'); // Drops komentars table
     }
 }
-

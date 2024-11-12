@@ -94,14 +94,15 @@ https://templatemo.com/tm-559-zay-shop
 
 <body>
     <!-- Start Top Nav -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
+     <!-- navigation -->
+   <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
         <div class="container text-light">
             <div class="w-100 d-flex justify-content-between">
                 <div>
                     <i class="fa fa-envelope mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">ElektronikKita@gmail.com</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:info@company.com">Elektronikita@gmail.com</a>
                     <i class="fa fa-phone mx-2"></i>
-                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">08963733</a>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:010-020-0340">0897237</a>
                 </div>
                 <div>
                     <a class="text-light" href="https://fb.com/templatemo" target="_blank" rel="sponsored"><i class="fab fa-facebook-f fa-sm fa-fw me-2"></i></a>
@@ -110,15 +111,12 @@ https://templatemo.com/tm-559-zay-shop
             </div>
         </div>
     </nav>
-    <!-- Close Top Nav -->
 
-
-    <!-- Header -->
     <nav class="navbar navbar-expand-lg navbar-light shadow">
         <div class="container d-flex justify-content-between align-items-center">
 
         <a class="navbar-brand logo-container" href="index.html">
-    <img src="{{ asset('assets/home/img/logo2.png') }}" alt="Logo" class="logo-img">
+    <img src="assets/home/img/logo2.pngg" alt="Logo" class="logo-img">
 </a>
 
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -144,16 +142,8 @@ https://templatemo.com/tm-559-zay-shop
                 </div>
                 <div class="navbar align-self-center d-flex">
                     <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="inputMobileSearch" placeholder="Search ...">
-                            <div class="input-group-text">
-                                <i class="fa fa-fw fa-search"></i>
-                            </div>
-                        </div>
+                        
                     </div>
-                    <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
-                        <i class="fa fa-fw fa-search text-dark mr-2"></i>
-                    </a>
                     <a class="nav-icon position-relative text-decoration-none" href="{{ url('/cart') }}">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark"></span>
@@ -178,9 +168,11 @@ https://templatemo.com/tm-559-zay-shop
         <div class="container pb-5">
             <div class="row">
                 <div class="col-lg-5 mt-5">
-                    <div class="card mb-3">                                         
-                        <img class="card-img img-fluid" src="{{ asset('assets/home/img/rogstrix1.jpg') }}"  alt="Card image cap" id="product-detail">
-                    </div>
+                <!-- Gambar Utama -->
+<div class="card mb-3">
+    <img class="card-img img-fluid" src="{{ asset('storage/' . $product->foto) }}" alt="Card image cap" id="product-detail">
+</div>
+
                     <div class="row">
                         <!--Start Controls-->
                         <div class="col-1 align-self-center">
@@ -196,26 +188,19 @@ https://templatemo.com/tm-559-zay-shop
                             <div class="carousel-inner product-links-wap" role="listbox">
 
                                 <!--First slide-->
-                                <div class="carousel-item active">
-                                    <div class="row">
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="{{ asset('assets/home/img/hh1.jpg') }}" alt="Product Image 1">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid" src="{{ asset('assets/home/img/hh2.jpg') }}" alt="Product Image 2">
-                                            </a>
-                                        </div>
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="card-img img-fluid"  src="{{ asset('assets/home/img/hh3.jpg') }}" alt="Product Image 3">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/.First slide-->
+<div class="carousel-item active">
+    <div class="row">
+        @foreach(json_decode($product->foto_lainnya, true) as $index => $foto)
+            <div class="col-4">
+                <a href="javascript:void(0);" onclick="changeMainImage('{{ asset('storage/' . $foto) }}')">
+                    <img class="card-img img-fluid" src="{{ asset('storage/' . $foto) }}" alt="Product Image {{ $index + 1 }}">
+                </a>
+            </div>
+        @endforeach
+    </div>
+</div>
+<!--/.First slide-->
+
 
                                 <!--Second slide-->
                                 <div class="carousel-item">
@@ -250,15 +235,19 @@ https://templatemo.com/tm-559-zay-shop
             <h1 class="h2">{{ $product->nama_produk }}</h1>
             <p class="h3 py-2">Rp.{{ number_format($product->harga, 0, ',', '.') }}</p>
             
-            <!-- Display product rating (hardcoded for now) -->
-            <p class="py-2">
-                <i class="fa fa-star text-warning"></i>
-                <i class="fa fa-star text-warning"></i>
-                <i class="fa fa-star text-warning"></i>
-                <i class="fa fa-star text-warning"></i>
-                <i class="fa fa-star text-secondary"></i>
-                <span class="list-inline-item text-dark">Rating 4.8 | 76 Comments</span>
-            </p>
+            <!-- Display product rating -->
+<p class="py-2">
+    @php
+        $starCount = round($averageRating); // Bulatkan rata-rata rating
+    @endphp
+    @for ($i = 1; $i <= 5; $i++)
+        <i class="fa fa-star {{ $i <= $starCount ? 'text-warning' : 'text-secondary' }}"></i>
+    @endfor
+    <span class="list-inline-item text-dark">
+        Rating {{ number_format($averageRating, 1) }} | {{ $commentCount }} Comments
+    </span>
+</p>
+
 
             <!-- Display product brand and description -->
             <ul class="list-inline">
@@ -271,29 +260,29 @@ https://templatemo.com/tm-559-zay-shop
             </ul>
 
             <h6>Description:</h6>
-            <p>{{ $product->deskripsi }}</p>
+            <p>
+    <span id="short-description">
+        {{ Str::limit($product->deskripsi, 300) }}
+    </span>
+    <span id="full-description" style="display: none;">
+        {{ $product->deskripsi }}
+    </span>
+
+    @if(strlen($product->deskripsi) > 300)
+        <a href="javascript:void(0);" id="toggle-description" onclick="toggleDescription()">Baca Selengkapnya</a>
+    @endif
+</p>
+
+
             
-            <!-- Display available colors and specifications -->
-            <ul class="list-inline">
-                <li class="list-inline-item">
-                    <h6>Warna yang tersedia :</h6>
-                </li>
-                <li class="list-inline-item">
-                    <p class="text-muted"><strong>Hitam / Silver / Putih</strong></p>
-                </li>
-            </ul>
+            
 
             <!-- Add to cart form -->
             <form action="" method="GET">
                 <input type="hidden" name="product-title" value="{{ $product->nama_produk }}">
                 <div class="row">
                     <div class="col-auto">
-                        <ul class="list-inline pb-3">
-                            <li class="list-inline-item">Warna :</li>
-                            <li class="list-inline-item"><span class="btn btn-success btn-size">Hitam</span></li>
-                            <li class="list-inline-item"><span class="btn btn-success btn-size">Silver</span></li>
-                            <li class="list-inline-item"><span class="btn btn-success btn-size">Putih</span></li>
-                        </ul>
+                        
                     </div>
                     <div class="col-auto">
                         <ul class="list-inline pb-3">
@@ -320,7 +309,8 @@ https://templatemo.com/tm-559-zay-shop
         </div>
     </section>
     <!-- Close Content -->
-     <!-- Comments Section -->
+     
+<!-- Comments Section -->
 <section class="bg-light comment-section center">
     <div class="container comment-container">
         <div class="row">
@@ -330,45 +320,61 @@ https://templatemo.com/tm-559-zay-shop
                         <h5 class="card-title">Komentar Produk</h5>
                         <!-- Display Comments -->
                         <div id="comment-list">
-                        <div id="comment-list">
-    @foreach ($komentars as $komentar)
-        <div class="media mb-3">
-            <div class="media-body">
-                <h6 class="mt-0">{{ $komentar->nama }}</h6> <!-- Menampilkan nama pengguna -->
-                <p>{{ $komentar->isi_komentar }}</p>
-            </div>
-        </div>
-    @endforeach
-</div>
-
+                            @foreach ($komentars as $komentar)
+                                <div class="media mb-3">
+                                    <div class="media-body">
+                                        <h6 class="mt-0">{{ $komentar->nama }}</h6> <!-- Menampilkan nama pengguna -->
+                                        <p>{{ $komentar->isi_komentar }}</p>
+                                        <p>
+                                            <strong>Rating:</strong>
+                                            @for ($i = 1; $i <= 5; $i++)
+                                                @if ($i <= $komentar->rating)
+                                                    <span class="text-warning">&#9733;</span> <!-- Bintang terisi -->
+                                                @else
+                                                    <span class="text-secondary">&#9734;</span> <!-- Bintang kosong -->
+                                                @endif
+                                            @endfor
+                                        </p>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
 
                         <!-- Notifikasi -->
-<div id="notification" class="alert alert-success mt-3" style="display: none;"></div>
+                        <div id="notification" class="alert alert-success mt-3" style="display: none;"></div>
 
-<!-- Add Comment Form -->
-<form id="comment-form" class="mt-4" action="{{ route('komentar.store') }}" method="POST">
-    @csrf
-    <input type="hidden" name="id_produk" value="{{ $product->id_produk }}">
-    <div class="mb-3">
-        <label for="comment-name" class="form-label">Nama</label>
-        <input type="text" class="form-control" id="comment-name" name="nama" placeholder="Nama Anda" required>
-    </div>
-    <div class="mb-3">
-        <label for="comment-text" class="form-label">Komentar</label>
-        <textarea class="form-control" id="comment-text" name="isi_komentar" rows="3" placeholder="Tulis komentar Anda" required></textarea>
-    </div>
-    <div class="d-grid">
-        <button type="submit" class="btn btn-success">Tambahkan Komentar</button>
-    </div>
-</form>
-
-
+                        <!-- Add Comment Form -->
+                        <form id="comment-form" class="mt-4" action="{{ route('komentar.store') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="id_produk" value="{{ $product->id_produk }}">
+                            <div class="mb-3">
+                                <label for="comment-name" class="form-label">Nama</label>
+                                <input type="text" class="form-control" id="comment-name" name="nama" placeholder="Nama Anda" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="comment-text" class="form-label">Komentar</label>
+                                <textarea class="form-control" id="comment-text" name="isi_komentar" rows="3" placeholder="Tulis komentar Anda" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Rating</label>
+                                <div>
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        <input type="radio" id="rating{{ $i }}" name="rating" value="{{ $i }}" required>
+                                        <label for="rating{{ $i }}">{{ $i }} <span class="text-warning">&#9733;</span></label>
+                                    @endfor
+                                </div>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-success">Tambahkan Komentar</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 
 
     <!-- Start Article -->
@@ -389,8 +395,7 @@ https://templatemo.com/tm-559-zay-shop
                     <img class="card-img rounded-0 img-fluid" src="{{ asset('storage/' . $product->foto) }}" alt="{{ $product->nama_produk }}">
                     <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                         <ul class="list-unstyled">
-                            <li><a class="btn btn-success text-white" href="#"><i class="far fa-heart"></i></a></li>
-                            <li>
+                            
                                 <a class="btn btn-success text-white mt-2" href="{{ route('product.details', ['id_produk' => $product->id_produk]) }}">
                                     <i class="far fa-eye"></i>
                                 </a>
@@ -540,6 +545,33 @@ https://templatemo.com/tm-559-zay-shop
 
     <!-- Start Slider Script -->
     <script src="assets/home/js/slick.min.js"></script>
+    <script>
+    function toggleDescription() {
+        var shortDesc = document.getElementById("short-description");
+        var fullDesc = document.getElementById("full-description");
+        var toggleLink = document.getElementById("toggle-description");
+
+        if (shortDesc.style.display === "none") {
+            // Menampilkan deskripsi singkat dan menyembunyikan deskripsi lengkap
+            shortDesc.style.display = "inline";
+            fullDesc.style.display = "none";
+            toggleLink.textContent = "Baca Selengkapnya";
+        } else {
+            // Menampilkan deskripsi lengkap dan menyembunyikan deskripsi singkat
+            shortDesc.style.display = "none";
+            fullDesc.style.display = "inline";
+            toggleLink.textContent = "Urungkan";
+        }
+    }
+</script>
+<script>
+    function changeMainImage(imageSrc) {
+        // Ganti gambar utama dengan gambar yang dipilih
+        document.getElementById('product-detail').src = imageSrc;
+    }
+</script>
+
+
     <script>
         $('#carousel-related-product').slick({
             infinite: true,

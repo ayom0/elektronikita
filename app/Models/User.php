@@ -15,7 +15,7 @@ class User extends Authenticatable
         'registration_date',
         'phone_number',
         'address', // Tambahkan kolom address di sini
-        'role', // Menambahkan kolom role
+        'role', // Menambahkan kolaom role
     ];
 
     protected $hidden = [

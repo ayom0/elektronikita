@@ -8,11 +8,25 @@ use Illuminate\Support\Facades\Hash;
 
 class UserManagementController extends Controller
 {
-    public function index()
-    {
-        $users = User::all();
-        return view('admin.UserManagement', compact('users'));
+    public function index(Request $request)
+{
+    $query = User::query();
+
+    // Filter by role if selected
+    if ($request->filled('role')) {
+        $query->where('role', $request->role);
     }
+
+    // Search by email if provided
+    if ($request->filled('email')) {
+        $query->where('email', 'like', '%' . $request->email . '%');
+    }
+
+    $users = $query->get();
+
+    return view('admin.UserManagement', compact('users'));
+}
+
 
     public function store(Request $request)
     {

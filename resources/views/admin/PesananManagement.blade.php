@@ -8,6 +8,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* CSS existing di sini */
+        .filter-form {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+.filter-form input,
+.filter-form select{
+    padding: 5px;
+    
+}
+
+.filter-form button {
+    padding: 5px;
+    background-color: #4CAF50;
+    
+}
+
         /* Modal styles */
         .modal {
             display: none;
@@ -48,15 +65,17 @@
         </div>
         <ul>
             <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-            <li><a href="{{ url('/usermanagement') }}">Usermanagement</a></li>
-            <li><a href="{{ url('/products') }}">ProductManagement</a></li>
-            <li><a href="{{ url('/categories') }}">CategoryManagement</a></li>
-            <li><a href="{{ url('/komentars') }}">Komentar Management</a></li>
-            <li><a href="{{ url('/orders') }}">Transaksi Management</a></li>
-            <li><a href="{{ url('/contacts') }}">Contact Management</a></li>
-            <li><a href="{{ url('/PesananManagement') }}">Pesanan Management</a></li>
-            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
-        </ul>
+            <li><a href="{{ url('/usermanagement') }}">User</a></li>
+            <li><a href="{{ url('/products') }}">Product</a></li>
+            <li><a href="{{ url('/categories') }}">Category</a></li>
+            <li><a href="{{ url('/komentars') }}">komentar</a></li>
+            <li><a href="{{ url('/orders') }}">Transaksi</a></li>
+            <li><a href="{{ url('/contacts') }}">contact</a></li>
+            <li><a href="{{ url('/PesananManagement') }}">Pesanan</a></li>
+            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            Logout
+        </a></li>
+    </ul>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
         </form>
@@ -66,7 +85,21 @@
         <button id="toggleSidebarBtn">☰</button>
         <div id="order-management" class="content-section">
             <h2>Manajemen Pesanan</h2>
-           
+            <form action="{{ url('/PesananManagement') }}" method="GET" class="filter-form">
+    <input type="text" name="user_id" placeholder="ID User" value="{{ request()->get('user_id') }}">
+    <input type="text" name="id_transaksi" placeholder="ID Transaksi" value="{{ request()->get('id_transaksi') }}">
+    <input type="text" name="nama_produk" placeholder="Nama Produk" value="{{ request()->get('nama_produk') }}">
+    <select name="status">
+        <option value="">-- Status --</option>
+        <option value="pending" {{ request()->get('status') == 'pending' ? 'selected' : '' }}>Pending</option>
+        <option value="dikirim" {{ request()->get('status') == 'dikirim' ? 'selected' : '' }}>Dikirim</option>
+        <option value="selesai" {{ request()->get('status') == 'selesai' ? 'selected' : '' }}>Selesai</option>
+        <option value="batal" {{ request()->get('status') == 'batal' ? 'selected' : '' }}>Batal</option>
+    </select>
+    <button type="submit">Apply</button>
+    <a href="{{ url('/PesananManagement') }}">Reset</a>
+</form>
+
 
             <!-- Pesanan Table -->
             <table>

@@ -10,8 +10,11 @@ class Komentar extends Model
     use HasFactory;
 
     protected $table = 'komentars';
+    protected $primaryKey = 'id_komentar'; // Sesuaikan dengan nama kolom ID
+   
 
-    protected $fillable = ['id_user', 'id_produk', 'isi_komentar' , 'nama'];
+
+    protected $fillable = ['id_user', 'id_produk', 'isi_komentar' , 'nama' , 'rating'];
 
     public function user()
     {

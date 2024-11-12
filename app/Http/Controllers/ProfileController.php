@@ -34,5 +34,3 @@ class ProfileController extends Controller
         return redirect()->route('profile')->with('success', 'Alamat berhasil diperbarui.');
     }
 }
-
-

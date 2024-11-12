@@ -7,9 +7,25 @@ use Illuminate\Http\Request;
 
 class CRUDContactController extends Controller
 {
-    public function index()
+    // Menampilkan daftar kontak dengan filter nama dan email
+    public function index(Request $request)
     {
-        $contacts = Contact::all();
+        $query = Contact::query();
+
+        // Menambahkan filter nama jika ada
+        if ($request->has('nama') && $request->nama != '') {
+            $query->where('name', 'like', '%' . $request->nama . '%');
+        }
+
+        // Menambahkan filter email jika ada
+        if ($request->has('email') && $request->email != '') {
+            $query->where('email', 'like', '%' . $request->email . '%');
+        }
+
+        // Ambil data kontak setelah filter diterapkan
+        $contacts = $query->get();
+
+        // Menampilkan halaman dengan data kontak yang sudah difilter
         return view('admin.contactManagement', compact('contacts'));
     }
 

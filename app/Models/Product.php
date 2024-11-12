@@ -17,7 +17,10 @@ class Product extends Model
         'deskripsi',
         'harga',
         'id_kategori',
+        'foto_lainnya',
     ];
+
+    
 
     public function category()
     {

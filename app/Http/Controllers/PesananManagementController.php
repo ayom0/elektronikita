@@ -8,11 +8,31 @@ use App\Models\Transaksi;
 class PesananManagementController extends Controller
 {
     // Tampilkan semua pesanan
-    public function index()
-    {
-        $transaksis = Transaksi::with('product')->get(); // Mengambil semua data transaksi dengan relasi produk
-        return view('admin.PesananManagement', compact('transaksis'));
+    public function index(Request $request)
+{
+    $query = Transaksi::with('product');
+
+    // Terapkan filter jika ada
+    if ($request->filled('user_id')) {
+        $query->where('user_id', $request->user_id);
     }
+    if ($request->filled('id_transaksi')) {
+        $query->where('id_transaksi', $request->id_transaksi);
+    }
+    if ($request->filled('nama_produk')) {
+        $query->whereHas('product', function ($q) use ($request) {
+            $q->where('nama_produk', 'like', '%' . $request->nama_produk . '%');
+        });
+    }
+    if ($request->filled('status')) {
+        $query->where('status', $request->status);
+    }
+
+    $transaksis = $query->get();
+
+    return view('admin.PesananManagement', compact('transaksis'));
+}
+
 
     // Simpan pesanan baru
     public function store(Request $request)

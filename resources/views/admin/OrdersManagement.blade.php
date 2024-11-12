@@ -17,13 +17,13 @@
         </div>
         <ul>
             <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-            <li><a href="{{ url('/usermanagement') }}">Usermanagement</a></li>
-            <li><a href="{{ url('/products') }}">ProductManagement</a></li>
-            <li><a href="{{ url('/categories') }}">CategoryManagement</a></li>
-            <li><a href="{{ url('/komentars') }}">komentarManagement</a></li>
-            <li><a href="{{ url('/orders') }}">TransaksiManagement</a></li>
-            <li><a href="{{ url('/contacts') }}">contactManagement</a></li>
-            <li><a href="{{ url('/PesananManagement') }}">PesananManagement</a></li>
+            <li><a href="{{ url('/usermanagement') }}">User</a></li>
+            <li><a href="{{ url('/products') }}">Product</a></li>
+            <li><a href="{{ url('/categories') }}">Category</a></li>
+            <li><a href="{{ url('/komentars') }}">komentar</a></li>
+            <li><a href="{{ url('/orders') }}">Transaksi</a></li>
+            <li><a href="{{ url('/contacts') }}">contact</a></li>
+            <li><a href="{{ url('/PesananManagement') }}">Pesanan</a></li>
             <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             Logout
         </a></li>

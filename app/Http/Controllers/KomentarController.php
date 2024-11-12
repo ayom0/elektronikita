@@ -14,7 +14,8 @@ class KomentarController extends Controller
         $request->validate([
             'nama' => 'required|string|max:255',
             'isi_komentar' => 'required|string',
-            'id_produk' => 'required|exists:products,id_produk'
+            'id_produk' => 'required|exists:products,id_produk',
+            'rating' => 'required|integer|between:1,5' // Validasi untuk rating
         ]);
 
         // Simpan komentar ke database
@@ -23,6 +24,7 @@ class KomentarController extends Controller
         $komentar->id_produk = $request->id_produk;
         $komentar->nama = $request->nama;
         $komentar->isi_komentar = $request->isi_komentar;
+        $komentar->rating = $request->rating; // Simpan rating ke database
         $komentar->save();
 
         // Arahkan kembali ke halaman produk yang sama
