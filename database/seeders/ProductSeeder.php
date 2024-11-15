@@ -16,6 +16,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 35999000,
                 'id_kategori' => 2,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -29,6 +30,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 21998000,
                 'id_kategori' => 2,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -42,6 +44,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 16998000,
                 'id_kategori' => 2,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -55,6 +58,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 9499000,
                 'id_kategori' => 2,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -68,6 +72,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 16998000,
                 'id_kategori' => 2,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -81,6 +86,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 15998000,
                 'id_kategori' => 2,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -94,6 +100,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 28399000,
                 'id_kategori' => 2,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -107,6 +114,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 18699000,
                 'id_kategori' => 2,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -120,6 +128,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 10199000,
                 'id_kategori' => 2,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -133,6 +142,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 10898000,
                 'id_kategori' => 2,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -146,6 +156,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 22998000,
                 'id_kategori' => 2,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -159,6 +170,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 38699000,
                 'id_kategori' => 2,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -172,6 +184,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 7359000,
                 'id_kategori' => 1,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -185,6 +198,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 12359000,
                 'id_kategori' => 1,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -198,6 +212,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 5399000,
                 'id_kategori' => 1,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -211,6 +226,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 6999000,
                 'id_kategori' => 1,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -224,6 +240,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 10899000,
                 'id_kategori' => 1,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -237,6 +254,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 5199000,
                 'id_kategori' => 1,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -250,6 +268,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 13559000,
                 'id_kategori' => 1,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -263,6 +282,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 5920000,
                 'id_kategori' => 1,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -276,6 +296,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 9859000,
                 'id_kategori' => 1,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -289,6 +310,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 16759000,
                 'id_kategori' => 1,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -302,6 +324,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 8999000,
                 'id_kategori' => 1,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -315,6 +338,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 21999000,
                 'id_kategori' => 1,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -328,6 +352,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 10499000,
                 'id_kategori' => 1,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -341,6 +366,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 16599000,
                 'id_kategori' => 1,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -354,6 +380,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 18599000,
                 'id_kategori' => 1,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -367,6 +394,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 12099000,
                 'id_kategori' => 1,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -380,6 +408,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 8299000,
                 'id_kategori' => 1,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -393,6 +422,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 2255000,
                 'id_kategori' => 1,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -406,6 +436,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 3399000,
                 'id_kategori' => 3,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -419,6 +450,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' =>  1849000,
                 'id_kategori' => 3,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -432,6 +464,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 2299000,
                 'id_kategori' => 3,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -445,6 +478,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 14399000,
                 'id_kategori' => 3,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -458,6 +492,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1999000,
                 'id_kategori' => 3,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -471,6 +506,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 3789000,
                 'id_kategori' => 3,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -484,6 +520,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 959000,
                 'id_kategori' => 3,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -497,6 +534,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 3490000,
                 'id_kategori' => 3,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -510,6 +548,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 2990000,
                 'id_kategori' => 3,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -523,6 +562,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 4988000,
                 'id_kategori' => 3,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -536,6 +576,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 4078000,
                 'id_kategori' => 3,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -549,6 +590,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 12775000,
                 'id_kategori' => 3,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -562,6 +604,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 3475000,
                 'id_kategori' => 3,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -575,6 +618,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 3200000,
                 'id_kategori' => 3,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -588,6 +632,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1900000,
                 'id_kategori' => 3,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -601,6 +646,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1820000,
                 'id_kategori' => 3,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -614,6 +660,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 2970000,
                 'id_kategori' => 3,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -628,6 +675,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 3575000,
                 'id_kategori' => 3,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -641,6 +689,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 930000,
                 'id_kategori' => 4,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -654,6 +703,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1930000,
                 'id_kategori' => 4,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -667,6 +717,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1269000,
                 'id_kategori' => 4,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -680,6 +731,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 4300000,
                 'id_kategori' => 4,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -693,6 +745,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 100000,
                 'id_kategori' => 4,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -706,6 +759,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 960000,
                 'id_kategori' => 4,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -719,6 +773,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1090000,
                 'id_kategori' => 4,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -732,6 +787,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 2390000,
                 'id_kategori' => 4,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -745,6 +801,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 2085000,
                 'id_kategori' => 4,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -758,6 +815,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1085000,
                 'id_kategori' => 4,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -771,6 +829,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1335000,
                 'id_kategori' => 4,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -784,6 +843,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 2415000,
                 'id_kategori' => 4,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -797,6 +857,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 4099000,
                 'id_kategori' => 4,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -810,6 +871,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 999000,
                 'id_kategori' => 4,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -823,6 +885,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 2790000,
                 'id_kategori' => 4,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -837,6 +900,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 2190000,
                 'id_kategori' => 5,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -850,6 +914,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 3120000,
                 'id_kategori' => 5,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -863,6 +928,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 4790000,
                 'id_kategori' => 5,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -876,6 +942,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 3890000,
                 'id_kategori' => 5,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -889,6 +956,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 5350000,
                 'id_kategori' => 5,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -902,6 +970,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 5390000,
                 'id_kategori' => 5,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -915,6 +984,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 6350000,
                 'id_kategori' => 5,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -928,6 +998,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 9250000,
                 'id_kategori' => 5,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -941,6 +1012,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 9450000,
                 'id_kategori' => 5,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -954,6 +1026,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 9430000,
                 'id_kategori' => 5,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -967,6 +1040,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 17900000,
                 'id_kategori' => 5,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -980,6 +1054,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 2250000,
                 'id_kategori' => 5,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -993,6 +1068,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 19980000,
                 'id_kategori' => 5,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1006,6 +1082,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 37400000,
                 'id_kategori' => 5,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1019,6 +1096,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 4700000,
                 'id_kategori' => 5,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1032,6 +1110,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 4850000,
                 'id_kategori' => 5,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1045,6 +1124,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 3140000,
                 'id_kategori' => 5,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1058,6 +1138,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 4700000,
                 'id_kategori' => 5,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1071,6 +1152,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1025000,
                 'id_kategori' => 6,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1084,6 +1166,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1225000,
                 'id_kategori' => 6,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1097,6 +1180,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1510000,
                 'id_kategori' => 6,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1110,6 +1194,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1770000,
                 'id_kategori' => 6,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1123,6 +1208,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 2140000,
                 'id_kategori' => 6,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1136,6 +1222,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 2990000,
                 'id_kategori' => 6,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1149,6 +1236,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 3420000,
                 'id_kategori' => 6,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1162,6 +1250,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 3390000,
                 'id_kategori' => 6,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1175,6 +1264,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 4900000,
                 'id_kategori' => 6,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1188,6 +1278,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 2900000,
                 'id_kategori' => 6,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1201,6 +1292,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 48790000,
                 'id_kategori' => 6,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1214,6 +1306,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1730000,
                 'id_kategori' => 6,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1227,6 +1320,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1260000,
                 'id_kategori' => 6,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1240,6 +1334,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 2250000,
                 'id_kategori' => 6,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1253,6 +1348,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1750000,
                 'id_kategori' => 6,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1266,6 +1362,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 3290000,
                 'id_kategori' => 6,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1279,6 +1376,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 4480000,
                 'id_kategori' => 6,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1292,6 +1390,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 9700000,
                 'id_kategori' => 6,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1305,6 +1404,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1120000,
                 'id_kategori' => 8,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1318,6 +1418,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1120000,
                 'id_kategori' => 8,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1331,6 +1432,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 3400000,
                 'id_kategori' => 8,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1344,6 +1446,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 6300000,
                 'id_kategori' => 8,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1357,6 +1460,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 2350000,
                 'id_kategori' => 8,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1370,6 +1474,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 2900000,
                 'id_kategori' => 8,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1383,6 +1488,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 2140000,
                 'id_kategori' => 8,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1396,6 +1502,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 2140000,
                 'id_kategori' => 8,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1409,6 +1516,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1125000,
                 'id_kategori' => 8,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1422,6 +1530,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 665000,
                 'id_kategori' => 7,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1435,6 +1544,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1995000,
                 'id_kategori' => 7,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1448,6 +1558,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 790000,
                 'id_kategori' => 7,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1461,6 +1572,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 2230000,
                 'id_kategori' => 7,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1474,6 +1586,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1870000,
                 'id_kategori' => 7,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1487,6 +1600,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1025000,
                 'id_kategori' => 7,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1500,6 +1614,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 699000,
                 'id_kategori' => 7,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1513,6 +1628,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 600000,
                 'id_kategori' => 7,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1526,6 +1642,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 2730000,
                 'id_kategori' => 7,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1539,6 +1656,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 5780000,
                 'id_kategori' => 9,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1552,6 +1670,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 2210000,
                 'id_kategori' => 9,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1565,6 +1684,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 7990000,
                 'id_kategori' => 9,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1578,6 +1698,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1690000,
                 'id_kategori' => 9,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1591,6 +1712,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 3400000,
                 'id_kategori' => 9,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1604,6 +1726,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 2295000,
                 'id_kategori' => 9,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1617,6 +1740,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 220000,
                 'id_kategori' => 10,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1630,6 +1754,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 270000,
                 'id_kategori' => 10,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1643,6 +1768,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 290000,
                 'id_kategori' => 10,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1656,6 +1782,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1890000,
                 'id_kategori' => 10,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1669,6 +1796,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 3129000,
                 'id_kategori' => 10,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -1682,6 +1810,7 @@ class ProductSeeder extends Seeder
                 'deskripsi' => 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
                 'harga' => 1192000,
                 'id_kategori' => 10,
+                'stok' => 100,
                 'created_at' => now(),
                 'updated_at' => now()
             ],

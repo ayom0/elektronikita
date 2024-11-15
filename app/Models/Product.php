@@ -18,6 +18,7 @@ class Product extends Model
         'harga',
         'id_kategori',
         'foto_lainnya',
+        'stok',
     ];
 
     

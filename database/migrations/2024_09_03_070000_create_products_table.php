@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -16,6 +15,7 @@ class CreateProductsTable extends Migration
             $table->json('foto_lainnya')->nullable(); // Additional photos stored as JSON
             $table->text('deskripsi'); // Product description
             $table->decimal('harga', 10, 2); // Product price
+            $table->integer('stok')->nullable(); // Product stock, nullable
             $table->foreignId('id_kategori')->constrained('categories', 'id_kategori')->onDelete('cascade'); // Foreign key to 'categories'
             $table->timestamps(); // Timestamps
         });

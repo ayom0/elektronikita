@@ -126,6 +126,7 @@ use App\Http\Controllers\ProductController;
 
 Route::resource('products', ProductController::class);
 
+
 //rute details pesanan
 use App\Http\Controllers\OrderController;
 

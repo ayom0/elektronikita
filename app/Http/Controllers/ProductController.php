@@ -52,16 +52,15 @@ public function store(Request $request)
     $request->validate([
         'nama_produk' => 'required|string|max:255',
         'foto' => 'required|image|mimes:jpg,png,jpeg|max:2048',
-        'foto_lainnya.*' => 'image|mimes:jpg,png,jpeg|max:2048', // Validasi untuk foto lainnya
+        'foto_lainnya.*' => 'image|mimes:jpg,png,jpeg|max:2048',
         'deskripsi' => 'required|string',
         'harga' => 'required|numeric',
         'id_kategori' => 'required|exists:categories,id_kategori',
+        'stok' => 'nullable|integer|min:0', // Validasi stok
     ]);
 
-    // Simpan foto utama
     $filePath = $request->file('foto')->store('product_images', 'public');
 
-    // Simpan foto lainnya jika ada
     $fotoLainnyaPaths = [];
     if ($request->hasFile('foto_lainnya')) {
         foreach ($request->file('foto_lainnya') as $file) {
@@ -76,11 +75,11 @@ public function store(Request $request)
         'deskripsi' => $request->input('deskripsi'),
         'harga' => $request->input('harga'),
         'id_kategori' => $request->input('id_kategori'),
+        'stok' => $request->input('stok'), // Menyimpan stok
     ]);
 
     return redirect()->route('products.index')->with('success', 'Product added successfully.');
 }
-
 
 public function update(Request $request, $id)
 {
@@ -91,11 +90,11 @@ public function update(Request $request, $id)
         'deskripsi' => 'required|string',
         'harga' => 'required|numeric',
         'id_kategori' => 'required|exists:categories,id_kategori',
+        'stok' => 'nullable|integer|min:0', // Validasi stok
     ]);
 
     $product = Product::findOrFail($id);
 
-    // Update foto utama jika ada
     $filePath = $product->foto;
     if ($request->hasFile('foto')) {
         if (Storage::exists($filePath)) {
@@ -104,7 +103,6 @@ public function update(Request $request, $id)
         $filePath = $request->file('foto')->store('product_images', 'public');
     }
 
-    // Update foto lainnya jika ada
     $fotoLainnyaPaths = json_decode($product->foto_lainnya) ?: [];
     if ($request->hasFile('foto_lainnya')) {
         foreach ($request->file('foto_lainnya') as $file) {
@@ -119,10 +117,12 @@ public function update(Request $request, $id)
         'deskripsi' => $request->input('deskripsi'),
         'harga' => $request->input('harga'),
         'id_kategori' => $request->input('id_kategori'),
+        'stok' => $request->input('stok'), // Menyimpan stok
     ]);
 
     return redirect()->route('products.index')->with('success', 'Product updated successfully.');
 }
+
 
 
 

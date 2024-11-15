@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -91,7 +92,7 @@ class CheckoutController extends Controller
         $item_details[] = [
             'id' => $item['id_produk'],
             'price' => $item['harga'],
-            'quantity' => $item['jumlah'], // Tambahkan jumlah barang
+            'quantity' => $item['jumlah'],
             'name' => $item['nama_produk'],
         ];
     }
@@ -115,7 +116,7 @@ class CheckoutController extends Controller
     $order->snap_token = $snapToken;
     $order->save();
 
-    // Simpan setiap item dalam keranjang ke tabel transaksi
+    // Simpan setiap item dalam keranjang ke tabel transaksi dan kurangi stok produk
     foreach ($cart as $item) {
         \DB::table('transaksi')->insert([
             'user_id' => Auth::id(),
@@ -126,17 +127,25 @@ class CheckoutController extends Controller
             'subtotal' => $item['harga'] * $item['jumlah'],
             'shipping_cost' => $ongkir,
             'total' => ($item['harga'] * $item['jumlah']) + $ongkir,
-            'quantity' => $item['jumlah'], // Simpan jumlah barang yang dibeli
+            'quantity' => $item['jumlah'],
             'payment_status' => 'pending',
-            'snap_token' => $snapToken, // Gunakan snap token yang sudah didefinisikan
+            'snap_token' => $snapToken,
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+        // Kurangi stok produk
+        $product = Product::find($item['id_produk']);
+        if ($product && $product->stok !== null) {
+            $product->stok = max(0, $product->stok - $item['jumlah']); // Pastikan stok tidak negatif
+            $product->save();
+        }
     }
 
     // Redirect to payment page with Snap token
     return view('payment', ['snapToken' => $snapToken, 'order' => $order]);
 }
+
 
 
     

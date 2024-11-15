@@ -145,6 +145,7 @@
             <th>Foto Lainnya</th>
             <th>Deskripsi</th>
             <th>Harga</th>
+            <th>Stok</th>
             <th>Kategori</th>
             <th>Actions</th>
         </tr>
@@ -171,7 +172,7 @@
     @endif
 </td>
         <td>
-    <span class="product-description">{{ Str::limit($product->deskripsi, 20) }}</span>
+    <span class="product-description">{{ Str::limit($product->deskripsi, 5) }}</span>
     @if (strlen($product->deskripsi) > 20) <!-- Cek apakah deskripsi lebih panjang dari 100 karakter -->
         <span class="full-description">{{ $product->deskripsi }}</span>
         <span class="read-more">Read More</span>
@@ -180,6 +181,7 @@
 
 
         <td>{{ number_format($product->harga, 2, ',', '.') }}</td>
+        <td>{{ $product->stok }}</td>
         <td>{{ $product->category->kategori }}</td>
         <td class="actions">
             <button class="edit" 
@@ -250,6 +252,10 @@
                 <input type="number" id="add-harga" name="harga" step="0.01" required>
             </div>
             <div class="form-group">
+    <label for="add-stok">Stok:</label>
+    <input type="number" id="add-stok" name="stok" min="0">
+</div>
+            <div class="form-group">
                 <label for="add-id-kategori">Kategori:</label>
                 <select id="add-id-kategori" name="id_kategori" required>
                     @foreach ($categories as $category)
@@ -290,6 +296,11 @@
                 <label for="edit-harga">Harga:</label>
                 <input type="number" id="edit-harga" name="harga" step="0.01" required>
             </div>
+            <div class="form-group">
+    <label for="edit-stok">Stok:</label>
+    <input type="number" id="edit-stok" name="stok" min="0">
+</div>
+
             <div class="form-group">
                 <label for="edit-id-kategori">Kategori:</label>
                 <select id="edit-id-kategori" name="id_kategori" required>
@@ -345,8 +356,11 @@ document.querySelectorAll('.edit').forEach(function(button) {
         var productId = this.getAttribute('data-id');
         var nama = this.getAttribute('data-nama');
         var harga = this.getAttribute('data-harga');
-        var kategoriId = this.getAttribute('data-id-kategori'); // Pastikan data-id-kategori adalah atribut yang benar
+        var kategoriId = this.getAttribute('data-id-kategori');
+        var stok = this.getAttribute('data-stok'); // Ambil data stok
 
+
+        document.getElementById('edit-stok').value = stok; // Isi input stok di modal // Pastikan data-id-kategori adalah atribut yang benar
         document.getElementById('edit-nama-produk').value = nama;
         document.getElementById('edit-harga').value = harga;
         document.getElementById('edit-id-kategori').value = kategoriId;
