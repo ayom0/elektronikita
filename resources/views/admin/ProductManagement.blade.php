@@ -179,13 +179,6 @@
 </td>
 
 
-
-
-
-
-
-
-
         <td>{{ number_format($product->harga, 2, ',', '.') }}</td>
         <td>{{ $product->category->kategori }}</td>
         <td class="actions">

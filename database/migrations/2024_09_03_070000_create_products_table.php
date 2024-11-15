@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -25,4 +26,3 @@ class CreateProductsTable extends Migration
         Schema::dropIfExists('products'); // Drops products table
     }
 }
-
