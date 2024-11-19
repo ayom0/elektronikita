@@ -7,9 +7,28 @@ use Illuminate\Http\Request;
 
 class OrdersayaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $orders = Order::all();
+        $query = Order::query();
+
+        // Filter berdasarkan email jika ada
+        if ($request->has('email') && $request->email != '') {
+            $query->where('email', 'like', '%' . $request->email . '%');
+        }
+
+        // Filter berdasarkan recipient_name jika ada
+        if ($request->has('recipient_name') && $request->recipient_name != '') {
+            $query->where('recipient_name', 'like', '%' . $request->recipient_name . '%');
+        }
+
+        // Filter berdasarkan payment_status jika ada
+        if ($request->has('payment_status') && $request->payment_status != '') {
+            $query->where('payment_status', $request->payment_status);
+        }
+
+        // Ambil data berdasarkan filter yang diterapkan
+        $orders = $query->get();
+
         return view('admin.OrdersManagement', compact('orders'));
     }
 
@@ -23,7 +42,7 @@ class OrdersayaController extends Controller
             'subtotal' => 'required|numeric',
             'shipping_cost' => 'required|numeric',
             'total' => 'required|numeric',
-            'payment_status' => 'nullable|in:pending,success,failed', // Add validation for payment_status
+            'payment_status' => 'nullable|in:pending,success,failed',
         ]);
 
         Order::create($request->all());
@@ -41,7 +60,7 @@ class OrdersayaController extends Controller
             'subtotal' => 'required|numeric',
             'shipping_cost' => 'required|numeric',
             'total' => 'required|numeric',
-            'payment_status' => 'nullable|in:pending,success,failed', // Add validation for payment_status
+            'payment_status' => 'nullable|in:pending,success,failed',
         ]);
 
         $order = Order::findOrFail($id);

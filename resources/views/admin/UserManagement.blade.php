@@ -8,23 +8,84 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome -->
     <style>
         /* Your existing CSS for sidebar, main content, table, and modal here */
-        /* CSS untuk Form Filter */
-        .filter-form {
-    margin-bottom: 20px;
-    display: flex;
-    gap: 10px;
+        h2 {
+    color: black;
 }
-.filter-form input,
-.filter-form select{
-    padding: 5px;
-    
+
+       /* Styling untuk form filter */
+.filter-form {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    max-width: 100%; /* Memungkinkan form untuk memanjang sepanjang lebar kontainer */
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: auto; /* Pastikan form memanjang sesuai ukuran kontainer */
+}
+
+.filter-form label {
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.filter-form select,
+.filter-form input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 200px; /* Memberikan lebar tetap pada input dan select */
 }
 
 .filter-form button {
-    padding: 5px;
+    padding: 8px 15px;
+    border: none;
     background-color: #4CAF50;
-    
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-left: 10px;
 }
+
+.filter-form button:hover {
+    background-color: #45a049;
+}
+
+/* Responsive: Jika layar kecil, form akan ditampilkan secara vertikal */
+@media (max-width: 768px) {
+    .filter-form {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .filter-form label {
+        margin-bottom: 5px;
+    }
+}
+
+/* Styling untuk tombol Add */
+.add-button {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+.add-button:hover {
+    background-color: #0056b3;
+}
+
 
         .modal {
             display: none;
@@ -59,28 +120,30 @@
     </style>
 </head>
 <body>
-    <div class="sidebar" id="sidebar">
-        <div class="logo">
-            <h2>Admin Panel</h2>
-        </div>
-        <ul>
-            <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-            <li><a href="{{ url('/usermanagement') }}">User</a></li>
-            <li><a href="{{ url('/products') }}">Product</a></li>
-            <li><a href="{{ url('/categories') }}">Category</a></li>
-            <li><a href="{{ url('/komentars') }}">komentar</a></li>
-            <li><a href="{{ url('/orders') }}">Transaksi</a></li>
-            <li><a href="{{ url('/contacts') }}">contact</a></li>
-            <li><a href="{{ url('/PesananManagement') }}">Pesanan</a></li>
-            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            Logout
-        </a></li>
+<div class="sidebar" id="sidebar">
+    <div class="logo">
+        <h2>Admin Panel</h2>
+    </div>
+    <ul>
+        <li><a href="{{ url('/dashboard') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+        <li><a href="{{ url('/usermanagement') }}"><i class="fas fa-users"></i> User</a></li>
+        <li><a href="{{ url('/products') }}"><i class="fas fa-box"></i> Product</a></li>
+        <li><a href="{{ url('/categories') }}"><i class="fas fa-tags"></i> Category</a></li>
+        <li><a href="{{ url('/komentars') }}"><i class="fas fa-comments"></i> Komentar</a></li>
+        <li><a href="{{ url('/orders') }}"><i class="fas fa-shopping-cart"></i> Transaksi</a></li>
+        <li><a href="{{ url('/contacts') }}"><i class="fas fa-envelope"></i> Contact</a></li>
+        <li><a href="{{ url('/PesananManagement') }}"><i class="fas fa-clipboard-list"></i> Pesanan</a></li>
+        <li>
+            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </li>
     </ul>
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
     </form>
-        </ul>
-    </div>
+</div>
+
 
     <div class="main-content" id="mainContent">
         <button id="toggleSidebarBtn">☰</button>
@@ -184,6 +247,20 @@
     </div>
 </div>
 
+        <!-- Modal for Delete Confirmation -->
+<div id="deleteUserModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h3>Are you sure you want to delete this user?</h3>
+        <form id="deleteUserForm" method="POST" style="display:inline;">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="delete-confirm-btn">Yes, Delete</button>
+            <button type="button" class="cancel-btn">Cancel</button>
+        </form>
+    </div>
+</div>
+
 
    <!-- Modal for Edit User -->
    <div id="editUserModal" class="modal">
@@ -278,6 +355,41 @@
             this.closest('.modal').style.display = 'none';
         });
     });
+
+    // Open delete confirmation modal
+document.querySelectorAll('.delete').forEach(function(button) {
+    button.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+        var userId = this.closest('form').getAttribute('action').split('/').pop(); // Get user ID from form action
+
+        // Set the form action dynamically for deletion
+        document.getElementById('deleteUserForm').action = "/users/" + userId;
+
+        // Show the modal
+        document.getElementById('deleteUserModal').style.display = 'block';
+    });
+});
+
+// Close modal when clicking outside of the modal content
+window.addEventListener('click', function(event) {
+    var deleteModal = document.getElementById('deleteUserModal');
+    if (event.target == deleteModal) {
+        deleteModal.style.display = 'none';
+    }
+});
+
+// Close modal when clicking the close button
+document.querySelectorAll('.close-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        this.closest('.modal').style.display = 'none';
+    });
+});
+
+// Cancel delete action
+document.querySelector('.cancel-btn').addEventListener('click', function() {
+    document.getElementById('deleteUserModal').style.display = 'none';
+});
+
 
 
         // Toggle sidebar

@@ -4,25 +4,30 @@ body {
     background-color: #f4f4f4;
 }
 
+
+
+.sidebar.closed {
+    transform: translateX(-100%);
+}
+
+/* Sidebar styles */
+/* Sidebar styles */
 .sidebar {
     height: 100vh;
     width: 250px;
-    background-color: #306EE8;
-    color: white;
+    background-color: #306EE8; /* Full biru */
+    color: white; /* Warna teks putih */
     position: fixed;
     top: 0;
     left: 0;
     padding: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    transform: translateX(0);
-    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
-.sidebar.closed {
-    transform: translateX(-100%);
-}
-
+/* Logo di sidebar */
 .sidebar .logo {
     text-align: center;
     margin-bottom: 30px;
@@ -31,31 +36,77 @@ body {
 .sidebar .logo h2 {
     font-size: 24px;
     font-weight: bold;
-    color: #fff;
+    color: white; /* Warna logo putih */
 }
 
+/* Menu styling */
 .sidebar ul {
     list-style: none;
     padding: 0;
+    margin: 0;
+    flex-grow: 1;
 }
 
 .sidebar ul li {
-    margin: 20px 0;
+    margin-bottom: 10px; /* Jarak antar menu */
 }
 
 .sidebar ul li a {
-    color: white;
+    color: white; /* Warna teks putih */
     text-decoration: none;
-    display: block;
+    display: flex;
+    align-items: center;
     padding: 10px 15px;
     border-radius: 5px;
-    transition: background 0.3s, padding-left 0.3s;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 20px;
+}
+
+.sidebar ul li a i {
+    margin-right: 15px; /* Jarak antara ikon dan teks */
+    font-size: 20px;
+    color: white; /* Warna ikon putih */
 }
 
 .sidebar ul li a:hover {
-    background-color: #235ab2;
-    padding-left: 25px;
+    background-color: #235ab2; /* Biru gelap saat hover */
 }
+
+.sidebar ul li a.active {
+    background-color: white; /* Warna putih saat aktif */
+    color: #306EE8; /* Teks biru */
+    font-weight: bold;
+}
+
+.sidebar ul li a.active i {
+    color: #306EE8; /* Ikon biru saat aktif */
+}
+
+/* Menu logout */
+.sidebar ul li a.logout {
+    color: #f8d7da; /* Warna merah untuk menu logout */
+}
+
+.sidebar ul li a.logout:hover {
+    background-color: #f8d7da; /* Merah muda saat hover */
+    color: #d9534f; /* Teks merah */
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+}
+
+
+
+
 
 .main-content {
     margin-left: 270px; /* Ini untuk jarak saat sidebar terbuka */
@@ -124,63 +175,99 @@ button:hover {
 }
 
 
+/* Table styles */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    background-color: #fafafa;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-table, th, td {
-    border: 1px solid #ddd;
-}
-
-th, td {
-    padding: 15px;
+    margin: 20px 0;
+    font-size: 16px;
     text-align: left;
 }
 
-th {
-    background-color: #306EE8;
-    color: white;
+/* Header styles */
+table thead tr {
+    background-color: #007bff; /* Biru */
+    color: #ffffff; /* Putih */
 }
 
-td {
-    color: #333;
+
+table thead th {
+    padding: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 2px solid #ddd;
 }
 
-td.actions {
-    text-align: center;
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
 }
 
-td.actions button {
+/* Header styles */
+table thead tr {
+    background-color: #007bff; /* Biru */
+    color: #ffffff; /* Putih */
+}
+
+table thead th {
+    padding: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom: 2px solid #ddd;
+}
+
+/* Body styles */
+table tbody tr:nth-child(odd) {
+    background-color: #f9f9f9; /* Putih */
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f1f1f1; /* Abu terang */
+}
+
+table tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Hover effect */
+table tbody tr:hover {
+    background-color: #e0e7ff; /* Biru lembut */
+}
+
+/* Action buttons */
+.actions button {
+    background: none;
+    border: none;
+    color: #007bff; /* Warna biru */
+    cursor: pointer;
+    font-size: 16px;
     margin: 0 5px;
-    padding: 5px 10px;
-    border-radius: 5px;
 }
 
-td.actions button.edit {
-    background-color: #28a745;
+.actions button i {
+    pointer-events: none;
 }
 
-td.actions button.delete {
-    background-color: #dc3545;
+.actions button.edit:hover {
+    color: #28a745; /* Hijau */
 }
 
-td.actions button:hover {
-    transform: scale(1.05);
+.actions button.delete:hover {
+    color: #dc3545; /* Merah */
 }
 
-td.actions button.edit:hover {
-    background-color: #218838;
+/* Form style for delete button */
+
+
+form {
+    display: inline;
 }
 
-td.actions button.delete:hover {
-    background-color: #c82333;
-}
 
 
 .modal {

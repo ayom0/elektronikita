@@ -16,24 +16,6 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 
-use Illuminate\Support\Facades\Password;
-
-Route::get('forgot-password', [\App\Http\Controllers\Auth\PasswordResetLinkController::class, 'create'])
-    ->middleware('guest')
-    ->name('password.request');
-
-Route::post('forgot-password', [\App\Http\Controllers\Auth\PasswordResetLinkController::class, 'store'])
-    ->middleware('guest')
-    ->name('password.email');
-
-Route::get('reset-password/{token}', [\App\Http\Controllers\Auth\NewPasswordController::class, 'create'])
-    ->middleware('guest')
-    ->name('password.reset');
-
-Route::post('reset-password', [\App\Http\Controllers\Auth\NewPasswordController::class, 'store'])
-    ->middleware('guest')
-    ->name('password.update');
-
 
 //Untuk Register dan Login
 use App\Http\Controllers\RegisterController;
@@ -113,6 +95,11 @@ Route::resource('orders', OrdersayaController::class);
 
 
 
+// routes/web.php
+use App\Http\Controllers\PasswordResetController;
+
+Route::get('password/reset', [PasswordResetController::class, 'showResetForm'])->name('password.request');
+Route::post('password/reset', [PasswordResetController::class, 'reset'])->name('password.update');
 
 
 
@@ -125,7 +112,6 @@ Route::resource('users', UserManagementController::class);
 use App\Http\Controllers\ProductController;
 
 Route::resource('products', ProductController::class);
-
 
 //rute details pesanan
 use App\Http\Controllers\OrderController;

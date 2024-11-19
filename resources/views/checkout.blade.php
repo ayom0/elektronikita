@@ -19,35 +19,103 @@
 
     <style>
         .order-details {
-            background-color: #f8f9fa;
-            padding: 2rem;
-            border-radius: 8px;
-        }
-        .order-details h3 {
-            color: #306EE8;
-        }
-        .order-details .btn-pay {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+}
+
+.order-details h3 {
+    color: #306EE8;
+    margin-bottom: 1rem;
+}
+
+.order-details .btn-pay {
             background-color: white;
             color: #306EE8;
             border: 2px solid #306EE8;
             font-weight: bold;
+            padding: 12px 30px; /* Mengatur padding tombol */
+            font-size: 1.2rem; /* Mengatur ukuran font tombol */
+            width: 100%; /* Membuat tombol memenuhi lebar container */
+            max-width: 300px; /* Membatasi lebar maksimum tombol */
+            margin-top: 1rem; /* Menambah jarak atas tombol */
         }
-        .order-details .btn-pay:hover {
-            background-color: #306EE8;
-            color: white;
-        }
-        .order-details .form-control {
-            border-radius: 0.25rem;
-        }
-        .order-summary {
-            margin-top: 2rem;
-            border-top: 2px solid #306EE8;
-            padding-top: 1rem;
-        }
-        .order-summary p {
-            font-size: 1.1rem;
-            font-weight: bold;
-        }
+
+.order-details .btn-pay:hover {
+    background-color: #306EE8;
+    color: white;
+}
+
+.order-details .form-control {
+    border-radius: 0.25rem;
+    max-width: 400px;
+}
+
+.order-summary {
+    margin-top: 2rem;
+    border-top: 2px solid #306EE8;
+    padding-top: 1rem;
+}
+
+.order-summary p {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* Styling for form groups */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+/* Responsiveness for form layout */
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.col-sm-3 {
+    flex: 0 0 30%;
+    max-width: 30%;
+}
+
+.col-sm-9 {
+    flex: 0 0 65%;
+    max-width: 65%;
+}
+
+/* Styling for item list */
+.items-list {
+    margin-top: 1rem;
+}
+
+.items-list .d-flex {
+    justify-content: space-between;
+}
+
+.items-list img {
+    max-width: 80px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .col-sm-3, .col-sm-9 {
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+
+    .order-details {
+        padding: 1rem;
+    }
+
+    .order-summary p {
+        font-size: 1rem;
+    }
+}
+
 
         /* Mengatur container logo */
 .logo-container {
@@ -137,66 +205,75 @@
 
     <!-- Order Details -->
     <section id="order-details" class="container my-5 pt-5">
-        <div class="order-details">
-            <h3 class="text-center">Detail Pesanan</h3>
-            <form action="{{ route('checkout.process') }}" method="POST">
-                @csrf
+    <div class="order-details">
+        <h3 class="text-center">Detail Pesanan</h3>
+        <form action="{{ route('checkout.process') }}" method="POST">
+            @csrf
 
-                <!-- Email (pre-filled) -->
-                <div class="form-group">
-                    <label for="email">Email</label>
+            <!-- Email (pre-filled) -->
+            <div class="form-group row">
+                <label for="email" class="col-sm-3 col-form-label">Email</label>
+                <div class="col-sm-9">
                     <input type="email" id="email" name="email" class="form-control" 
                            value="{{ auth()->check() ? auth()->user()->email : '' }}" readonly>
                 </div>
+            </div>
 
-                <!-- Recipient Name (required) -->
-                <div class="form-group">
-                    <label for="recipient_name">Nama Penerima</label>
+            <!-- Recipient Name (required) -->
+            <div class="form-group row">
+                <label for="recipient_name" class="col-sm-3 col-form-label">Nama Penerima</label>
+                <div class="col-sm-9">
                     <input type="text" id="recipient_name" name="recipient_name" class="form-control" required>
                 </div>
+            </div>
 
-                <!-- Address (pre-filled) -->
-                <div class="form-group">
-                    <label for="address">Alamat</label>
+            <!-- Address (pre-filled) -->
+            <div class="form-group row">
+                <label for="address" class="col-sm-3 col-form-label">Alamat</label>
+                <div class="col-sm-9">
                     <input type="text" id="address" name="address" class="form-control" 
                            value="{{ auth()->check() ? auth()->user()->address : '' }}" readonly>
                 </div>
+            </div>
 
-                <!-- Message for Courier (optional) -->
-                <div class="form-group">
-                    <label for="message">Pesan ke Kurir (Optional)</label>
+            <!-- Message for Courier (optional) -->
+            <div class="form-group row">
+                <label for="message" class="col-sm-3 col-form-label">Pesan ke Kurir (Optional)</label>
+                <div class="col-sm-9">
                     <textarea id="message" name="message" class="form-control" rows="3"></textarea>
                 </div>
+            </div>
 
-                <!-- Purchased Items -->
-                <h4>Barang yang Dibeli</h4>
-                <div class="items-list">
-                    @foreach($cart as $item)
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <img src="{{ asset('storage/' . $item['foto']) }}" width="80" alt="{{ $item['nama_produk'] }}">
-                            <div>
-                                <p>{{ $item['nama_produk'] }}</p>
-                                <p>Rp{{ number_format($item['harga'], 2, ',', '.') }} x {{ $item['jumlah'] }}</p>
-                            </div>
-                            <p class="font-weight-bold">Rp{{ number_format($item['harga'] * $item['jumlah'], 2, ',', '.') }}</p>
+            <!-- Purchased Items -->
+            <h4>Barang yang Dibeli</h4>
+            <div class="items-list">
+                @foreach($cart as $item)
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <img src="{{ asset('storage/' . $item['foto']) }}" width="80" alt="{{ $item['nama_produk'] }}">
+                        <div>
+                            <p>{{ $item['nama_produk'] }}</p>
+                            <p>Rp{{ number_format($item['harga'], 2, ',', '.') }} x {{ $item['jumlah'] }}</p>
                         </div>
-                    @endforeach
-                </div>
+                        <p class="font-weight-bold">Rp{{ number_format($item['harga'] * $item['jumlah'], 2, ',', '.') }}</p>
+                    </div>
+                @endforeach
+            </div>
 
-                <!-- Order Summary -->
-                <div class="order-summary">
-                    <p>Subtotal: Rp{{ number_format($subtotal, 2, ',', '.') }}</p>
-                    <p>Ongkir: Rp{{ number_format($ongkir, 2, ',', '.') }}</p>
-                    <p>Total: Rp{{ number_format($total, 2, ',', '.') }}</p>
-                </div>
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <p>Subtotal: Rp{{ number_format($subtotal, 2, ',', '.') }}</p>
+                <p>Ongkir: Rp{{ number_format($ongkir, 2, ',', '.') }}</p>
+                <p>Total: Rp{{ number_format($total, 2, ',', '.') }}</p>
+            </div>
 
-                <!-- Submit Button -->
-                <div class="text-center">
-                    <button type="submit" class="btn btn-pay">Bayar</button>
-                </div>
-            </form>
-        </div>
-    </section>
+            <!-- Submit Button -->
+            <div class="text-center">
+                <button type="submit" class="btn btn-pay">Bayar</button>
+            </div>
+        </form>
+    </div>
+</section>
+
 
     <!-- Start Footer -->
     <footer class="bg-dark" id="tempaltemo_footer">

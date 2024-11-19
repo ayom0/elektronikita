@@ -11,6 +11,12 @@
     
     <!-- Boxicons CSS -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .bx-show {
+    content: '\eb41'; /* Ikon mata terbuka */
+}
+
+    </style>
 </head>
 <body>
     <section class="container forms">
@@ -24,14 +30,16 @@
     </div>
 
     <div class="field input-field">
-        <input type="password" name="password" placeholder="Password" class="password" required>
-        <i class='bx bx-hide eye-icon'></i>
-    </div>
+    <input type="password" name="password" placeholder="Password" class="password" id="password" required>
+    <i class='bx bx-hide eye-icon' id="togglePassword"></i>
+</div>
 
-    <div class="form-link">
+
+<div class="form-link">
     <a href="{{ route('password.request') }}" class="forgot-pass">Forgot password?</a>
+</div>
 
-    </div>
+
 
     <div class="field button-field">
         <button type="submit">Login</button>
@@ -58,5 +66,22 @@
 
     <!-- JavaScript -->
     <script src="{{ asset('js/script.js') }}"></script>
+    <script>
+        // Ambil elemen password dan ikon toggle
+const passwordInput = document.getElementById('password');
+const togglePassword = document.getElementById('togglePassword');
+
+// Tambahkan event listener pada ikon toggle
+togglePassword.addEventListener('click', function () {
+    // Periksa tipe input saat ini
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+
+    // Toggle ikon mata
+    this.classList.toggle('bx-hide');
+    this.classList.toggle('bx-show');
+});
+
+    </script>
 </body>
 </html>

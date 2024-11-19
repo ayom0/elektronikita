@@ -31,6 +31,32 @@ https://templatemo.com/tm-559-zay-shop
 -->
 
 <style>
+    .rating-input {
+        display: none; /* Menyembunyikan radio button */
+    }
+
+    .rating-input + label {
+        cursor: pointer;
+        font-size: 30px;
+        transition: transform 0.3s ease;
+    }
+
+    /* Mengubah warna bintang yang dipilih */
+    .rating-input:checked ~ .d-flex label {
+        color: gold;
+    }
+
+    /* Hover effect untuk bintang */
+    .rating-input + label:hover,
+    .rating-input + label:hover ~ label {
+        transform: scale(1.2); /* Efek zoom pada hover */
+    }
+
+    /* Mengubah warna bintang yang dipilih */
+    .rating-input:checked + label,
+    .rating-input:checked + label ~ label {
+        color: gold;
+    }
 
 /* Kontainer utama komentar */
 .comment-section {
@@ -356,14 +382,14 @@ https://templatemo.com/tm-559-zay-shop
                                 <textarea class="form-control" id="comment-text" name="isi_komentar" rows="3" placeholder="Tulis komentar Anda" required></textarea>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Rating</label>
-                                <div>
-                                    @for ($i = 1; $i <= 5; $i++)
-                                        <input type="radio" id="rating{{ $i }}" name="rating" value="{{ $i }}" required>
-                                        <label for="rating{{ $i }}">{{ $i }} <span class="text-warning">&#9733;</span></label>
-                                    @endfor
-                                </div>
-                            </div>
+    <label class="form-label">Rating</label>
+    <div class="d-flex">
+        @for ($i = 1; $i <= 5; $i++)
+            <input type="radio" id="rating{{ $i }}" name="rating" value="{{ $i }}" class="rating-input" required>
+            <label for="rating{{ $i }}" class="text-warning">&#9733;</label>
+        @endfor
+    </div>
+</div>
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-success">Tambahkan Komentar</button>
                             </div>

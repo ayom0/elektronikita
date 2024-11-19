@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->date('registration_date'); // Registration date
             $table->string('role')->default('user'); // Role with default 'user'
             $table->timestamps(); // Timestamps
+            $table->softDeletes(); // Menambahkan kolom deleted_at untuk soft deletes
         });
     }
     
@@ -25,4 +26,3 @@ class CreateUsersTable extends Migration
         Schema::dropIfExists('users'); // Drops users table
     }
 }
-

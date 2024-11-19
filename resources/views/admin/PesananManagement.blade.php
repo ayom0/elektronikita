@@ -8,21 +8,53 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* CSS existing di sini */
-        .filter-form {
-    margin-bottom: 20px;
-    display: flex;
-    gap: 10px;
+       /* Your existing CSS for sidebar, main content, table, and modal here */
+       h2 {
+    color: black;
 }
-.filter-form input,
-.filter-form select{
-    padding: 5px;
-    
+
+       /* Styling untuk form filter */
+.filter-form {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    max-width: 100%; /* Memungkinkan form untuk memanjang sepanjang lebar kontainer */
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: auto; /* Pastikan form memanjang sesuai ukuran kontainer */
+}
+
+.filter-form label {
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.filter-form select,
+.filter-form input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 200px; /* Memberikan lebar tetap pada input dan select */
 }
 
 .filter-form button {
-    padding: 5px;
+    padding: 8px 15px;
+    border: none;
     background-color: #4CAF50;
-    
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    margin-left: 10px;
+}
+
+.filter-form button:hover {
+    background-color: #45a049;
 }
 
         /* Modal styles */
@@ -64,17 +96,19 @@
             <h2>Admin Panel</h2>
         </div>
         <ul>
-            <li><a href="{{ url('/dashboard') }}">Dashboard</a></li>
-            <li><a href="{{ url('/usermanagement') }}">User</a></li>
-            <li><a href="{{ url('/products') }}">Product</a></li>
-            <li><a href="{{ url('/categories') }}">Category</a></li>
-            <li><a href="{{ url('/komentars') }}">komentar</a></li>
-            <li><a href="{{ url('/orders') }}">Transaksi</a></li>
-            <li><a href="{{ url('/contacts') }}">contact</a></li>
-            <li><a href="{{ url('/PesananManagement') }}">Pesanan</a></li>
-            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            Logout
-        </a></li>
+        <li><a href="{{ url('/dashboard') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+        <li><a href="{{ url('/usermanagement') }}"><i class="fas fa-users"></i> User</a></li>
+        <li><a href="{{ url('/products') }}"><i class="fas fa-box"></i> Product</a></li>
+        <li><a href="{{ url('/categories') }}"><i class="fas fa-tags"></i> Category</a></li>
+        <li><a href="{{ url('/komentars') }}"><i class="fas fa-comments"></i> Komentar</a></li>
+        <li><a href="{{ url('/orders') }}"><i class="fas fa-shopping-cart"></i> Transaksi</a></li>
+        <li><a href="{{ url('/contacts') }}"><i class="fas fa-envelope"></i> Contact</a></li>
+        <li><a href="{{ url('/PesananManagement') }}"><i class="fas fa-clipboard-list"></i> Pesanan</a></li>
+        <li>
+            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </li>
     </ul>
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
